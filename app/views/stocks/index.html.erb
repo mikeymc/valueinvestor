@@ -1,0 +1,24 @@
+<h1>All Stocks</h1>
+
+<table>
+  <th align="left">Name</th>
+  <th align="left">Symbol</th>
+  <th align="left">Exchange</th>
+  <th align="left">Current EPS</th>
+  <th align="left">Dividends Per Share</th>
+  <th align="left">Day High Price</th>
+  <th align="left">Day Low Price</th>
+  <% @stocks.each do |stock| %>
+    <div>
+      <tr>
+      <td><%= stock.name %></td>
+      <td><%= stock.symbol %></td>
+      <td><%= stock.index %></td>
+      <td><%= stock.currentEPS %></td>
+      <td><%= stock.dividends_per_share %></td>
+      <td><%= stock.day_high_price %></td>
+      <td><%= stock.day_low_price %></td>
+      </tr>
+    </div>
+  <% end %>
+</table>
