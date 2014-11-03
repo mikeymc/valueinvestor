@@ -8,10 +8,12 @@
           <th align="text-center">Name</th>
           <th align="text-center">Symbol</th>
           <th align="text-center">Exchange</th>
-          <th align="text-center">Current EPS</th>
-          <th align="text-center">Dividends Per Share</th>
-          <th align="text-center">Day High Price</th>
-          <th align="text-center">Day Low Price</th>
+          <th align="text-center">Curr Est EPS</th>
+          <th align="text-center">Dividends</th>
+          <th align="text-center">Day High</th>
+          <th align="text-center">Day Low</th>
+          <th align="text-center">Book Value</th>
+          <th align="text-center">Price/Book</th>
           <% @stocks.each do |stock| %>
             <div>
               <tr class="row">
@@ -22,10 +24,13 @@
                 <td><%= stock.dividends_per_share %></td>
                 <td><%= stock.day_high_price %></td>
                 <td><%= stock.day_low_price %></td>
+                <td><%= stock.book_value %></td>
+                <td><%= stock.price_to_book_ratio %></td>
               </tr>
             </div>
           <% end %>
         </table>
+        <%= will_paginate @stocks %>
       </div>
     </div>
   </div>

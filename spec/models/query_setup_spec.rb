@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe QuerySetup  do
-  aapl_xom = "\"Exxon Mobil Corpo\",\"XOM\",\"NYSE\",7.58,2.64,94.31,96.89\r\n\"Apple Inc.\",\"AAPL\",\"NasdaqNM\",7.65,1.8114,107.21,108.04\r\n"
+  aapl_xom = "\"Exxon Mobil Corpo\",\"XOM\",\"NYSE\",7.58,2.64,94.31,96.89,42.478\r\n\"Apple Inc.\",\"AAPL\",\"NasdaqNM\",7.65,1.8114,107.21,108.04,19.015\r\n"
 
   describe "getting_the_initial_stock_ticker_list" do
     it "should have 14939 items" do
@@ -17,20 +17,20 @@ RSpec.describe QuerySetup  do
   end
 
   describe "make_request" do
+    expected_response = 'expected_response'
     it "should call the right api endpoint with more than one stock symbol passed in" do
-      WebMock.stub_request(:get, "http://download.finance.yahoo.com/d/quotes.csv?s=XOM+AAPL&f=nsxe7dgh")
+      WebMock.stub_request(:get, "http://download.finance.yahoo.com/d/quotes.csv?s=XOM+AAPL&f=nsxe7dhgb4p6")
         .with(headers: {'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent' => 'Ruby'})
-        .to_return(status: 200, body: aapl_xom, headers: {})
+        .to_return(status: 200, body: expected_response, headers: {})
       response = QuerySetup.new.make_request(['XOM', 'AAPL'])
-      expect(response.body).to eq(aapl_xom)
+      expect(response.body).to eq(expected_response)
     end
     it "should build the right URI with one stock symbol passed in" do
-      raw_response = "one result"
-      WebMock.stub_request(:get, "http://download.finance.yahoo.com/d/quotes.csv?s=XOM&f=nsxe7dgh")
+      WebMock.stub_request(:get, "http://download.finance.yahoo.com/d/quotes.csv?s=XOM&f=nsxe7dhgb4p6")
         .with(headers: {'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent' => 'Ruby'})
-        .to_return(status: 200, body: raw_response, headers: {})
+        .to_return(status: 200, body: expected_response, headers: {})
       response = QuerySetup.new.make_request(['XOM'])
-      expect(response.body).to eq(raw_response)
+      expect(response.body).to eq(expected_response)
     end
   end
 
@@ -49,15 +49,17 @@ RSpec.describe QuerySetup  do
       expect(first_stock[:symbol]).to eq('XOM')
       expect(first_stock[:currentEPS]).to eq('7.58')
       expect(first_stock[:dividends_per_share]).to eq('2.64')
+      expect(first_stock[:book_value]).to eq('42.478')
 
       expect(second_stock[:name]).to eq('Apple Inc.')
       expect(second_stock[:index]).to eq('NasdaqNM')
       expect(second_stock[:symbol]).to eq('AAPL')
       expect(second_stock[:currentEPS]).to eq('7.65')
       expect(second_stock[:dividends_per_share]).to eq('1.8114')
+      expect(second_stock[:book_value]).to eq('19.015')
     end
     it "should correctly split when a company has a ', Inc' in its name" do
-      raw_response = "\"Bemis Company, In\",\"BMS\",\"NYSE\",2.32,5.335,4.444,5.555"
+      raw_response = "\"Bemis Company, In\",\"BMS\",\"NYSE\",2.32,5.335,4.444,5.555,6.666,12"
       list = QuerySetup.parse_raw_response_to_json raw_response
       first_stock = list[0]
       expect(first_stock[:name]).to eq('Bemis Company, In')
@@ -67,6 +69,8 @@ RSpec.describe QuerySetup  do
       expect(first_stock[:dividends_per_share]).to eq('5.335')
       expect(first_stock[:day_high_price]).to eq('4.444')
       expect(first_stock[:day_low_price]).to eq('5.555')
+      expect(first_stock[:book_value]).to eq('6.666')
+      expect(first_stock[:price_to_book_ratio]).to eq('12')
     end
     it "should correctly split 'FMC Technologies,'" do
       raw_response = "\FMC Technologies,\",\"FTI\",\"NYSE\",2.86,1.111,5.555,4.444"

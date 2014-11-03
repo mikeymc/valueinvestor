@@ -31,7 +31,9 @@ class QuerySetup
         currentEPS: stock_obj[3],
         dividends_per_share: stock_obj[4],
         day_high_price: stock_obj[5],
-        day_low_price: stock_obj[6]
+        day_low_price: stock_obj[6],
+        book_value: stock_obj[7],
+        price_to_book_ratio: stock_obj[8]
       }
 
       list << stock_hash
@@ -43,11 +45,25 @@ class QuerySetup
     stocks_for_uri = '' + stock_list.shift
     stock_list.each { |symbol| stocks_for_uri = stocks_for_uri + '+' + stock_list.shift }
     WebMock.allow_net_connect!
-    url = URI.parse('http://download.finance.yahoo.com/d/quotes.csv?s=' + stocks_for_uri + '&f=nsxe7dgh')
+    url = URI.parse('http://download.finance.yahoo.com/d/quotes.csv?s=' + stocks_for_uri + '&f=' + options)
     req = Net::HTTP::Get.new(url.to_s)
     res = Net::HTTP.start(url.host, url.port) do |http|
       http.request(req)
     end
     res
   end
+
+  def options
+    name = 'n'
+    symbol = 's'
+    exchange = 'x'
+    estimated_current_eps = 'e7'
+    dividends_per_share = 'd'
+    daily_low_price = 'g'
+    daily_high_price = 'h'
+    book_value = 'b4'
+    price_to_book_ratio = 'p6'
+    name+symbol+exchange+estimated_current_eps+dividends_per_share+daily_high_price+daily_low_price+book_value+price_to_book_ratio
+  end
+
 end

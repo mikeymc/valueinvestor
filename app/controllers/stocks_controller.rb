@@ -17,10 +17,12 @@ class StocksController < ApplicationController
           s.dividends_per_share = stock[:dividends_per_share]
           s.day_high_price = stock[:day_high_price]
           s.day_low_price = stock[:day_low_price]
+          s.book_value = stock[:book_value]
+          s.price_to_book_ratio = stock[:price_to_book_ratio]
           s.save!
         end
       end
     end
-    @stocks = Stock.all
+    @stocks = Stock.paginate(:page => params[:page], :per_page => 30)
   end
 end
