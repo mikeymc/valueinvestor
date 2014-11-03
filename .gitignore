@@ -14,3 +14,10 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+/public/assets/*.js
+/public/assets/*.gz
+/public/assets/*.css
+/public/assetes/stylesheets/.sass-cache
+.sass-cache
+

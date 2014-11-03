@@ -27,6 +27,10 @@ GEM
       tzinfo (~> 0.3.37)
     addressable (2.3.6)
     arel (4.0.2)
+    autoprefixer-rails (3.1.2.20141016)
+      execjs
+    bootstrap-sass (3.2.0.2)
+      sass (~> 3.2)
     builder (3.1.4)
     capybara (2.4.4)
       mime-types (>= 1.16)
@@ -146,6 +150,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  autoprefixer-rails
+  bootstrap-sass (~> 3.2.0)
   capybara
   coffee-rails (~> 4.0.0)
   jbuilder (~> 1.2)
