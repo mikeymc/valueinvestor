@@ -145,6 +145,7 @@ RSpec.describe QuerySetup  do
       expect(first_stock[:day_low_price]).to eq('4.444')
     end
   end
+
   describe "get_next_200" do
     it "should return the next 200 items" do
       list = [*1..400]
@@ -155,7 +156,6 @@ RSpec.describe QuerySetup  do
       second = @qs.get_next_200
       expect(second.size).to eq(200)
     end
-
     it "should return the remaining items if less than 200 remain" do
       list = [*1..205]
       @qs = QuerySetup.new
