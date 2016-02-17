@@ -2,11 +2,11 @@ require 'rails_helper'
 
 RSpec.describe YahooStockDataFetcher do
   it 'returns data given a list of ticker symbols' do
-    FAKE_RESPONSE = "\"Tiffany & Co. Common Stock\",\"TIF\",\"NYQ\",3.78,1.60,61.91,60.43,22.25,2.73\n\"Response Genetics, Inc.\",\"RGDX\",\"NCM\",-0.190,N/A,N/A,N/A,0.000,N/A"
+    fake_response = "\"Tiffany & Co. Common Stock\",\"TIF\",\"NYQ\",3.78,1.60,61.91,60.43,22.25,2.73\n\"Response Genetics, Inc.\",\"RGDX\",\"NCM\",-0.190,N/A,N/A,N/A,0.000,N/A"
 
-    WebMock.stub_request(:get, 'http://download.finance.yahoo.com/d/quotes.csv?s=XOM&f=nsxe7dhgb4p6')
-      .with(headers: {'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent' => 'Ruby'})
-      .to_return(status: 200, body: FAKE_RESPONSE, headers: {})
+    WebMock
+      .stub_request(:get, 'http://download.finance.yahoo.com/d/quotes.csv?f=nsxe7dhgb4p6&s=TIF%2BRGDX')
+      .to_return(status: 200, body: fake_response, headers: {})
 
     @fetcher = YahooStockDataFetcher.new
     data = @fetcher.fetch_stock_data(['TIF', 'RGDX'])
