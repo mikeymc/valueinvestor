@@ -1,3 +1,5 @@
+require 'byebug'
+
 class QuerySetup
 
   attr_accessor :list
@@ -5,7 +7,7 @@ class QuerySetup
   def generate_list
     csv = File.read('db/american_stocks.csv')
     if !csv.valid_encoding?
-      csv = csv.encode("UTF-16be", :invalid=>:replace, :replace=>"?").encode('UTF-8')
+      csv = csv.encode('UTF-16be', :invalid=>:replace, :replace=>'?').encode('UTF-8')
     end
     company_list = csv.split('|||')
 
@@ -19,9 +21,9 @@ class QuerySetup
     @list.shift(200)
   end
 
-  def self.parse_raw_response_to_json(raw_response)
+  def self.parse_raw_response(raw_response)
     list = []
-    raw_response_array = raw_response.delete("\"").split("\r\n")
+    raw_response_array = raw_response.delete("\"").split("\n")
     raw_response_array.each do |stock_obj|
       stock_obj = stock_obj.split(/,(?![\s,])/)
       stock_hash = {
