@@ -15,6 +15,7 @@ group :development, :test do
   gem 'byebug'
   gem 'capybara', '>=0'
   gem 'factory_girl'
+  # gem 'factory_girl_rails'
   gem 'poltergeist'
   gem 'rspec', '>=0'
   gem 'rspec-rails'
