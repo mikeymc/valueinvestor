@@ -18,5 +18,6 @@ group :development, :test do
   gem 'rspec', '>=0'
   gem 'rspec-rails'
   gem 'seed_dump'
+  gem 'selenium-webdriver'
   gem 'webmock'
 end

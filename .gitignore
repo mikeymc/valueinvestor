@@ -20,4 +20,5 @@
 /public/assets/*.css
 /public/assetes/stylesheets/.sass-cache
 .sass-cache
+.byebug_history
 
