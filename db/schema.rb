@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141103032310) do
+ActiveRecord::Schema.define(version: 20160218173555) do
 
   create_table "stocks", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
-    t.string   "index"
+    t.string   "exchange"
     t.string   "symbol"
     t.string   "currentEPS"
     t.string   "dividends_per_share"

@@ -14,14 +14,14 @@ RSpec.describe YahooRawResponseJsonParser do
       second_stock = list[1]
 
       expect(first_stock[:name]).to eq('Exxon Mobil Corpo')
-      expect(first_stock[:index]).to eq('NYSE')
+      expect(first_stock[:exchange]).to eq('NYSE')
       expect(first_stock[:symbol]).to eq('XOM')
       expect(first_stock[:currentEPS]).to eq('7.58')
       expect(first_stock[:dividends_per_share]).to eq('2.64')
       expect(first_stock[:book_value]).to eq('42.478')
 
       expect(second_stock[:name]).to eq('Apple Inc.')
-      expect(second_stock[:index]).to eq('NasdaqNM')
+      expect(second_stock[:exchange]).to eq('NasdaqNM')
       expect(second_stock[:symbol]).to eq('AAPL')
       expect(second_stock[:currentEPS]).to eq('7.65')
       expect(second_stock[:dividends_per_share]).to eq('1.8114')
@@ -32,7 +32,7 @@ RSpec.describe YahooRawResponseJsonParser do
       list = YahooRawResponseJsonParser.parse raw_response
       first_stock = list[0]
       expect(first_stock[:name]).to eq('Bemis Company, In')
-      expect(first_stock[:index]).to eq('NYSE')
+      expect(first_stock[:exchange]).to eq('NYSE')
       expect(first_stock[:symbol]).to eq('BMS')
       expect(first_stock[:currentEPS]).to eq('2.32')
       expect(first_stock[:dividends_per_share]).to eq('5.335')
@@ -46,7 +46,7 @@ RSpec.describe YahooRawResponseJsonParser do
       list = YahooRawResponseJsonParser.parse raw_response
       first_stock = list[0]
       expect(first_stock[:name]).to eq('FMC Technologies,')
-      expect(first_stock[:index]).to eq('NYSE')
+      expect(first_stock[:exchange]).to eq('NYSE')
       expect(first_stock[:symbol]).to eq('FTI')
       expect(first_stock[:currentEPS]).to eq('2.86')
       expect(first_stock[:dividends_per_share]).to eq('1.111')
@@ -59,7 +59,7 @@ RSpec.describe YahooRawResponseJsonParser do
       first_stock = list[0]
       expect(first_stock[:name]).to eq('3D EYE SOLUTIONS,')
       expect(first_stock[:symbol]).to eq('TDEY')
-      expect(first_stock[:index]).to eq('Other OTC')
+      expect(first_stock[:exchange]).to eq('Other OTC')
       expect(first_stock[:currentEPS]).to eq('0.00')
       expect(first_stock[:dividends_per_share]).to eq('4.234')
       expect(first_stock[:day_high_price]).to eq('5.555')
@@ -71,7 +71,7 @@ RSpec.describe YahooRawResponseJsonParser do
       first_stock = list[0]
       expect(first_stock[:name]).to eq('ONEX CORPORATION,')
       expect(first_stock[:symbol]).to eq('OCX.TO')
-      expect(first_stock[:index]).to eq('Toronto')
+      expect(first_stock[:exchange]).to eq('Toronto')
       expect(first_stock[:currentEPS]).to eq('0.95')
       expect(first_stock[:dividends_per_share]).to eq('0')
       expect(first_stock[:day_high_price]).to eq('5.555')
@@ -83,7 +83,7 @@ RSpec.describe YahooRawResponseJsonParser do
       first_stock = list[0]
       expect(first_stock[:name]).to eq('Eaton Vance Penns')
       expect(first_stock[:symbol]).to eq('EIP')
-      expect(first_stock[:index]).to eq('AMEX')
+      expect(first_stock[:exchange]).to eq('AMEX')
       expect(first_stock[:currentEPS]).to eq('0.00')
       expect(first_stock[:dividends_per_share]).to eq('9.999')
       expect(first_stock[:day_high_price]).to eq('5.555')
@@ -95,7 +95,7 @@ RSpec.describe YahooRawResponseJsonParser do
       first_stock = list[0]
       expect(first_stock[:name]).to eq('Brookfield Infras')
       expect(first_stock[:symbol]).to eq('BIP')
-      expect(first_stock[:index]).to eq('NYSE')
+      expect(first_stock[:exchange]).to eq('NYSE')
       expect(first_stock[:currentEPS]).to eq('1.30')
       expect(first_stock[:dividends_per_share]).to eq('1.00')
       expect(first_stock[:day_high_price]).to eq('5.555')
@@ -107,7 +107,7 @@ RSpec.describe YahooRawResponseJsonParser do
       first_stock = list[0]
       expect(first_stock[:name]).to eq('Sinclair Broadcas')
       expect(first_stock[:symbol]).to eq('SBGI')
-      expect(first_stock[:index]).to eq('NasdaqNM')
+      expect(first_stock[:exchange]).to eq('NasdaqNM')
       expect(first_stock[:currentEPS]).to eq('1.83')
       expect(first_stock[:dividends_per_share]).to eq('5.3')
       expect(first_stock[:day_high_price]).to eq('5.555')
@@ -120,7 +120,7 @@ RSpec.describe YahooRawResponseJsonParser do
       first_stock = list[0]
       expect(first_stock[:name]).to eq('Tiffany & Co. Common Stock')
       expect(first_stock[:symbol]).to eq('TIF')
-      expect(first_stock[:index]).to eq('NYQ')
+      expect(first_stock[:exchange]).to eq('NYQ')
       expect(first_stock[:currentEPS]).to eq('3.78')
       expect(first_stock[:dividends_per_share]).to eq('1.60')
       expect(first_stock[:day_high_price]).to eq('61.91')
@@ -131,7 +131,7 @@ RSpec.describe YahooRawResponseJsonParser do
       second_stock = list[1]
       expect(second_stock[:name]).to eq('Response Genetics, Inc.')
       expect(second_stock[:symbol]).to eq('RGDX')
-      expect(second_stock[:index]).to eq('NCM')
+      expect(second_stock[:exchange]).to eq('NCM')
       expect(second_stock[:currentEPS]).to eq('-0.190')
       expect(second_stock[:dividends_per_share]).to eq('N/A')
       expect(second_stock[:day_high_price]).to eq('N/A')

@@ -4,8 +4,8 @@ RSpec.describe StockDataAggregator do
   fake_response = "\"Tiffany & Co. Common Stock\",\"TIF\",\"NYQ\",3.78,1.60,61.91,60.43,22.25,2.73\n\"Response Genetics, Inc.\",\"RGDX\",\"NCM\",-0.190,N/A,N/A,N/A,0.000,N/A"
 
   before(:each) do
-    create(:stock, name: 'Tiffany & Co. Common Stock', index: 'NYQ', symbol: 'TIF')
-    create(:stock, name: 'Response Genetics, Inc.', index: 'NCM', symbol: 'RGDX')
+    create(:stock, name: 'Tiffany & Co. Common Stock', exchange: 'NYQ', symbol: 'TIF')
+    create(:stock, name: 'Response Genetics, Inc.', exchange: 'NCM', symbol: 'RGDX')
     WebMock
       .stub_request(:get, /download\.finance\.yahoo\.com/)
       .to_return(:status => 200, :body => fake_response, :headers => {})

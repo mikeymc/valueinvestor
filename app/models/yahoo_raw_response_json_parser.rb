@@ -7,7 +7,7 @@ class YahooRawResponseJsonParser
       stock_hash = {
         name: stock_obj[0],
         symbol: stock_obj[1],
-        index: stock_obj[2],
+        exchange: stock_obj[2],
         currentEPS: stock_obj[3],
         dividends_per_share: stock_obj[4],
         day_high_price: stock_obj[5],

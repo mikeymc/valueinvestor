@@ -6,7 +6,7 @@ RSpec.describe Stock, :type => :model do
       stock_hash = {
         name: 'stock-name',
         symbol: 'stock-symbol',
-        index: 'stock-index',
+        exchange: 'stock-exchange',
         currentEPS: 'current-eps',
         dividends_per_share: 'stock-dividends',
         day_high_price: 'stock-day-high',
@@ -18,7 +18,7 @@ RSpec.describe Stock, :type => :model do
       Stock.create_new_stock(stock_hash)
       stock = Stock.last
       expect(stock.name).to eq('stock-name')
-      expect(stock.index).to eq('stock-index')
+      expect(stock.exchange).to eq('stock-exchange')
       expect(stock.symbol).to eq('stock-symbol')
       expect(stock.currentEPS).to eq('current-eps')
       expect(stock.dividends_per_share).to eq('stock-dividends')
@@ -31,7 +31,7 @@ RSpec.describe Stock, :type => :model do
       stock_hash = {
         name: 'Some Stock',
         symbol: 'ABC',
-        index: 'N/A',
+        exchange: 'N/A',
         currentEPS: 'N/A',
         dividends_per_share: 'N/A',
         day_high_price: 'N/A',
@@ -43,7 +43,7 @@ RSpec.describe Stock, :type => :model do
       Stock.create_new_stock(stock_hash)
       stock = Stock.last
       expect(stock.name).to eq('Some Stock')
-      expect(stock.index).to eq('')
+      expect(stock.exchange).to eq('')
       expect(stock.symbol).to eq('ABC')
       expect(stock.currentEPS).to eq('')
       expect(stock.dividends_per_share).to eq('')
@@ -56,7 +56,7 @@ RSpec.describe Stock, :type => :model do
       stock_hash = {
         name: 'nan',
         symbol: 'nan',
-        index: 'nan',
+        exchange: 'nan',
         currentEPS: 'nan',
         dividends_per_share: 'nan',
         day_high_price: 'nan',
@@ -68,7 +68,7 @@ RSpec.describe Stock, :type => :model do
       Stock.create_new_stock(stock_hash)
       stock = Stock.last
       expect(stock.name).to eq('')
-      expect(stock.index).to eq('')
+      expect(stock.exchange).to eq('')
       expect(stock.symbol).to eq('')
       expect(stock.currentEPS).to eq('')
       expect(stock.dividends_per_share).to eq('')
@@ -81,7 +81,7 @@ RSpec.describe Stock, :type => :model do
       first_stock = {
         name: 'N/A',
         symbol: 'ABC',
-        index: 'stock-index',
+        exchange: 'stock-exchange',
         currentEPS: 'current-eps',
         dividends_per_share: 'stock-dividends',
         day_high_price: 'stock-day-high',
@@ -92,7 +92,7 @@ RSpec.describe Stock, :type => :model do
       second_stock = {
         name: 'stock-name',
         symbol: 'DEF',
-        index: 'stock-index',
+        exchange: 'stock-exchange',
         currentEPS: 'current-eps',
         dividends_per_share: 'stock-dividends',
         day_high_price: 'stock-day-high',

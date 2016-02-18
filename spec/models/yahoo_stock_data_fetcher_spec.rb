@@ -14,7 +14,7 @@ RSpec.describe YahooStockDataFetcher do
     first_stock = data[0]
     expect(first_stock[:name]).to eq('Tiffany & Co. Common Stock')
     expect(first_stock[:symbol]).to eq('TIF')
-    expect(first_stock[:index]).to eq('NYQ')
+    expect(first_stock[:exchange]).to eq('NYQ')
     expect { Float(first_stock[:currentEPS]) }.not_to raise_error
     expect { Float(first_stock[:dividends_per_share]) }.not_to raise_error
     expect { Float(first_stock[:day_high_price]) }.not_to raise_error
@@ -25,7 +25,7 @@ RSpec.describe YahooStockDataFetcher do
     second_stock = data[1]
     expect(second_stock[:name]).to eq('Response Genetics, Inc.')
     expect(second_stock[:symbol]).to eq('RGDX')
-    expect(second_stock[:index]).to eq('NCM')
+    expect(second_stock[:exchange]).to eq('NCM')
     expect(second_stock[:currentEPS]).to eq('-0.190')
     expect(second_stock[:dividends_per_share]).to eq('N/A')
     expect(second_stock[:day_high_price]).to eq('N/A')

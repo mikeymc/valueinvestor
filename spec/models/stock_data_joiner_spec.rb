@@ -2,13 +2,13 @@ require 'rails_helper'
 
 RSpec.describe StockDataJoiner do
   it 'merges the Yahoo data into the stocks' do
-    create(:stock, symbol: 'TIF', name: 'Buffalo Wild Wings', index: 'NYSE')
-    create(:stock, symbol: 'RGDX', name: 'The Gap', index: 'Nasdaq')
+    create(:stock, symbol: 'TIF', name: 'Buffalo Wild Wings', exchange: 'NYSE')
+    create(:stock, symbol: 'RGDX', name: 'The Gap', exchange: 'Nasdaq')
 
     first_stock = {}
     first_stock[:name] = 'Buffalo Wild Wings'
     first_stock[:symbol] = 'TIF'
-    first_stock[:index] = 'NYSE'
+    first_stock[:exchange] = 'NYSE'
     first_stock[:currentEPS] = '3.78'
     first_stock[:dividends_per_share] = '1.60'
     first_stock[:day_high_price] = '61.91'
@@ -19,7 +19,7 @@ RSpec.describe StockDataJoiner do
     second_stock = {}
     second_stock[:name] = 'The Gap'
     second_stock[:symbol] = 'RGDX'
-    second_stock[:index] = 'NCM'
+    second_stock[:exchange] = 'NCM'
     second_stock[:currentEPS] = '-0.190'
     second_stock[:dividends_per_share] = 'N/A'
     second_stock[:day_high_price] = 'N/A'
@@ -37,7 +37,7 @@ RSpec.describe StockDataJoiner do
 
     expect(tif_stock[:name]).to eq('Buffalo Wild Wings')
     expect(tif_stock[:symbol]).to eq('TIF')
-    expect(tif_stock[:index]).to eq('NYSE')
+    expect(tif_stock[:exchange]).to eq('NYSE')
     expect(tif_stock[:currentEPS]).to eq('3.78')
     expect(tif_stock[:dividends_per_share]).to eq('1.60')
     expect(tif_stock[:day_high_price]).to eq('61.91')
@@ -47,7 +47,7 @@ RSpec.describe StockDataJoiner do
 
     expect(rgdx_stock[:name]).to eq('The Gap')
     expect(rgdx_stock[:symbol]).to eq('RGDX')
-    expect(rgdx_stock[:index]).to eq('Nasdaq')
+    expect(rgdx_stock[:exchange]).to eq('Nasdaq')
     expect(rgdx_stock[:currentEPS]).to eq('-0.190')
     expect(rgdx_stock[:dividends_per_share]).to eq('N/A')
     expect(rgdx_stock[:day_high_price]).to eq('N/A')
