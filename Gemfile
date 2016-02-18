@@ -19,6 +19,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'capybara', '>=0'
   gem 'webmock'
+  gem 'seed_dump'
 end
 
 group :doc do
