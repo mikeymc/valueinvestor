@@ -10,24 +10,30 @@
           <th align="text-center"><%= sortable "name" %></th>
           <th align="text-center"><%= sortable "symbol" %></th>
           <th align="text-center"><%= sortable "exchange" %></th>
-          <th align="text-center"><%= sortable "currentEPS", "Current Estimated EPS" %></th>
+          <th align="text-center"><%= sortable "current_eps", "Current Estimated EPS" %></th>
           <th align="text-center"><%= sortable "dividends_per_share" %></th>
           <th align="text-center"><%= sortable "day_high_price" %></th>
           <th align="text-center"><%= sortable "day_low_price" %></th>
           <th align="text-center"><%= sortable "book_value" %></th>
           <th align="text-center"><%= sortable "price_to_book_ratio" %></th>
+          <th align="text-center"><%= sortable "price_to_earnings_ratio" %></th>
+          <th align="text-center"><%= sortable "year_low_price" %></th>
+          <th align="text-center"><%= sortable "year_high_price" %></th>
           <% @stocks.each do |stock| %>
             <div>
               <tr class="row">
                 <td><%= stock.name %></td>
                 <td><%= stock.symbol %></td>
                 <td><%= stock.exchange %></td>
-                <td><%= stock.currentEPS %></td>
+                <td><%= stock.current_eps %></td>
                 <td><%= stock.dividends_per_share %></td>
                 <td><%= stock.day_high_price %></td>
                 <td><%= stock.day_low_price %></td>
                 <td><%= stock.book_value %></td>
                 <td><%= stock.price_to_book_ratio %></td>
+                <td><%= stock.price_to_earnings_ratio %></td>
+                <td><%= stock.year_low_price %></td>
+                <td><%= stock.year_high_price %></td>
               </tr>
             </div>
           <% end %>

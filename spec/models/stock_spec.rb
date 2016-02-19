@@ -7,7 +7,7 @@ RSpec.describe Stock, :type => :model do
         name: 'stock-name',
         symbol: 'stock-symbol',
         exchange: 'stock-exchange',
-        currentEPS: 'current-eps',
+        current_eps: 'current-eps',
         dividends_per_share: 'stock-dividends',
         day_high_price: 'stock-day-high',
         day_low_price: 'stock-day-low',
@@ -20,7 +20,7 @@ RSpec.describe Stock, :type => :model do
       expect(stock.name).to eq('stock-name')
       expect(stock.exchange).to eq('stock-exchange')
       expect(stock.symbol).to eq('stock-symbol')
-      expect(stock.currentEPS).to eq('current-eps')
+      expect(stock.current_eps).to eq('current-eps')
       expect(stock.dividends_per_share).to eq('stock-dividends')
       expect(stock.day_high_price).to eq('stock-day-high')
       expect(stock.day_low_price).to eq('stock-day-low')
@@ -32,7 +32,7 @@ RSpec.describe Stock, :type => :model do
         name: 'Some Stock',
         symbol: 'ABC',
         exchange: 'N/A',
-        currentEPS: 'N/A',
+        current_eps: 'N/A',
         dividends_per_share: 'N/A',
         day_high_price: 'N/A',
         day_low_price: 'N/A',
@@ -45,7 +45,7 @@ RSpec.describe Stock, :type => :model do
       expect(stock.name).to eq('Some Stock')
       expect(stock.exchange).to eq('')
       expect(stock.symbol).to eq('ABC')
-      expect(stock.currentEPS).to eq('')
+      expect(stock.current_eps).to eq('')
       expect(stock.dividends_per_share).to eq('')
       expect(stock.day_high_price).to eq('')
       expect(stock.day_low_price).to eq('')
@@ -57,7 +57,7 @@ RSpec.describe Stock, :type => :model do
         name: 'nan',
         symbol: 'nan',
         exchange: 'nan',
-        currentEPS: 'nan',
+        current_eps: 'nan',
         dividends_per_share: 'nan',
         day_high_price: 'nan',
         day_low_price: 'nan',
@@ -70,7 +70,7 @@ RSpec.describe Stock, :type => :model do
       expect(stock.name).to eq('')
       expect(stock.exchange).to eq('')
       expect(stock.symbol).to eq('')
-      expect(stock.currentEPS).to eq('')
+      expect(stock.current_eps).to eq('')
       expect(stock.dividends_per_share).to eq('')
       expect(stock.day_high_price).to eq('')
       expect(stock.day_low_price).to eq('')
@@ -82,7 +82,7 @@ RSpec.describe Stock, :type => :model do
         name: 'N/A',
         symbol: 'ABC',
         exchange: 'stock-exchange',
-        currentEPS: 'current-eps',
+        current_eps: 'current-eps',
         dividends_per_share: 'stock-dividends',
         day_high_price: 'stock-day-high',
         day_low_price: 'stock-day-low',
@@ -93,7 +93,7 @@ RSpec.describe Stock, :type => :model do
         name: 'stock-name',
         symbol: 'DEF',
         exchange: 'stock-exchange',
-        currentEPS: 'current-eps',
+        current_eps: 'current-eps',
         dividends_per_share: 'stock-dividends',
         day_high_price: 'stock-day-high',
         day_low_price: 'stock-day-low',

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160218173555) do
+ActiveRecord::Schema.define(version: 20160219053042) do
 
   create_table "stocks", force: true do |t|
     t.datetime "created_at"
@@ -19,12 +19,15 @@ ActiveRecord::Schema.define(version: 20160218173555) do
     t.string   "name"
     t.string   "exchange"
     t.string   "symbol"
-    t.string   "currentEPS"
+    t.string   "current_eps"
     t.string   "dividends_per_share"
     t.string   "day_high_price"
     t.string   "day_low_price"
     t.string   "book_value"
     t.string   "price_to_book_ratio"
+    t.string   "price_to_earnings_ratio"
+    t.string   "year_low_price"
+    t.string   "year_high_price"
   end
 
 end

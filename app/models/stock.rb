@@ -13,7 +13,7 @@ class Stock < ActiveRecord::Base
       s.name = sanitize_field stock[:name]
       s.symbol = sanitize_field stock[:symbol]
       s.exchange = sanitize_field stock[:exchange]
-      s.currentEPS = sanitize_field stock[:currentEPS]
+      s.current_eps = sanitize_field stock[:current_eps]
       s.dividends_per_share = sanitize_field stock[:dividends_per_share]
       s.day_high_price = sanitize_field stock[:day_high_price]
       s.day_low_price = sanitize_field stock[:day_low_price]
