@@ -152,7 +152,7 @@ RSpec.describe YahooRawResponseJsonParser do
       expect(first_stock[:symbol]).to eq('CRAI')
       expect(first_stock[:exchange]).to eq('NMS')
       expect(first_stock[:current_eps]).to eq('1.29')
-      expect(first_stock[:dividends_per_share]).to eq('N/A')
+      expect(first_stock[:dividends_per_share]).to eq('')
       expect(first_stock[:day_high_price]).to eq('17.11')
       expect(first_stock[:day_low_price]).to eq('16.79')
       expect(first_stock[:book_value]).to eq('24.21')
@@ -179,11 +179,11 @@ RSpec.describe YahooRawResponseJsonParser do
       expect(second_stock[:symbol]).to eq('RGDX')
       expect(second_stock[:exchange]).to eq('NCM')
       expect(second_stock[:current_eps]).to eq('-0.190')
-      expect(second_stock[:dividends_per_share]).to eq('N/A')
-      expect(second_stock[:day_high_price]).to eq('N/A')
-      expect(second_stock[:day_low_price]).to eq('N/A')
+      expect(second_stock[:dividends_per_share]).to eq('')
+      expect(second_stock[:day_high_price]).to eq('')
+      expect(second_stock[:day_low_price]).to eq('')
       expect(second_stock[:book_value]).to eq('0.000')
-      expect(second_stock[:price_to_book_ratio]).to eq('N/A')
+      expect(second_stock[:price_to_book_ratio]).to eq('')
     end
   end
 end
