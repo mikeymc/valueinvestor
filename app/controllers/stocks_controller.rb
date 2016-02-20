@@ -5,7 +5,7 @@ class StocksController < ApplicationController
     @stocks = Stock
                 .where.not(sort_column.to_sym => '')
                 .order(sort_column + ' ' + sort_direction)
-                .paginate(:page => params[:page], :per_page => 30)
+                .paginate(:page => params[:page], :per_page => 20)
   end
 
   def sort_column
