@@ -3,6 +3,7 @@ class StocksController < ApplicationController
 
   def index
     @stocks = Stock
+                .where.not(year_high_price: '')
                 .order(sort_column + ' ' + sort_direction)
                 .paginate(:page => params[:page], :per_page => 30)
   end
