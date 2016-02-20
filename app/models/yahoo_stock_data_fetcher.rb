@@ -5,7 +5,6 @@ class YahooStockDataFetcher
 
   def fetch_stock_data(tickers)
     response = make_request tickers
-    File.open('responses.txt', 'a') {|f| f.write(response) }
     YahooRawResponseJsonParser.parse response
   end
 

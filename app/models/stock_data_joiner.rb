@@ -3,7 +3,6 @@ require 'byebug'
 class StockDataJoiner
   def join(yahoo_stock_data)
     yahoo_stock_data.each do |yahoo_stock|
-      File.open('stocks_to_join.txt', 'a') {|f| f.write("#{yahoo_stock}\n") }
       stock = Stock.find_by_symbol(yahoo_stock[:symbol])
       stock.current_eps = yahoo_stock[:current_eps]
       stock.dividends_per_share = yahoo_stock[:dividends_per_share]
