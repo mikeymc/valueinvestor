@@ -23,15 +23,15 @@
               <tr class="row">
                 <td><%= stock.name %> (<%= stock.symbol %>)</td>
                 <td><%= stock.exchange %></td>
-                <td><%= stock.current_eps %></td>
-                <td><%= stock.dividends_per_share %></td>
-                <td><%= stock.day_high_price %></td>
-                <td><%= stock.day_low_price %></td>
-                <td><%= stock.book_value %></td>
-                <td><%= stock.price_to_book_ratio %></td>
-                <td><%= stock.price_to_earnings_ratio %></td>
-                <td><%= stock.year_low_price %></td>
-                <td><%= stock.year_high_price %></td>
+                <td><%= (stock.current_eps).round(2) unless !stock.current_eps %></td>
+                <td><%= (stock.dividends_per_share).round(2) unless !stock.dividends_per_share %></td>
+                <td><%= (stock.day_high_price).round(2) unless !stock.day_high_price %></td>
+                <td><%= (stock.day_low_price).round(2) unless !stock.day_low_price %></td>
+                <td><%= (stock.book_value).round(2) unless !stock.book_value %></td>
+                <td><%= (stock.price_to_book_ratio).round(2) unless !stock.price_to_book_ratio %></td>
+                <td><%= (stock.price_to_earnings_ratio).round(2) unless !stock.price_to_earnings_ratio %></td>
+                <td><%= (stock.year_low_price).round(2) unless !stock.year_low_price %></td>
+                <td><%= (stock.year_high_price).round(2) unless !stock.year_high_price %></td>
               </tr>
             </div>
           <% end %>

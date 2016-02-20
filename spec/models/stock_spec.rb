@@ -7,12 +7,12 @@ RSpec.describe Stock, :type => :model do
         name: 'stock-name',
         symbol: 'stock-symbol',
         exchange: 'stock-exchange',
-        current_eps: 'current-eps',
-        dividends_per_share: 'stock-dividends',
-        day_high_price: 'stock-day-high',
-        day_low_price: 'stock-day-low',
-        book_value: 'stock-book-value',
-        price_to_book_ratio: 'stock-price-to-book'
+        current_eps: '1.2',
+        dividends_per_share: '2.3',
+        day_high_price: '3.4',
+        day_low_price: '4.5',
+        book_value: '5.6',
+        price_to_book_ratio: '6.7'
       }
 
       Stock.create_new_stock(stock_hash)
@@ -20,12 +20,12 @@ RSpec.describe Stock, :type => :model do
       expect(stock.name).to eq('stock-name')
       expect(stock.exchange).to eq('stock-exchange')
       expect(stock.symbol).to eq('stock-symbol')
-      expect(stock.current_eps).to eq('current-eps')
-      expect(stock.dividends_per_share).to eq('stock-dividends')
-      expect(stock.day_high_price).to eq('stock-day-high')
-      expect(stock.day_low_price).to eq('stock-day-low')
-      expect(stock.book_value).to eq('stock-book-value')
-      expect(stock.price_to_book_ratio).to eq('stock-price-to-book')
+      expect(stock.current_eps).to eq(1.2)
+      expect(stock.dividends_per_share).to eq(2.3)
+      expect(stock.day_high_price).to eq(3.4)
+      expect(stock.day_low_price).to eq(4.5)
+      expect(stock.book_value).to eq(5.6)
+      expect(stock.price_to_book_ratio).to eq(6.7)
     end
     it 'enters any N/A as an empty string' do
       stock_hash = {
@@ -45,12 +45,12 @@ RSpec.describe Stock, :type => :model do
       expect(stock.name).to eq('Some Stock')
       expect(stock.exchange).to eq('')
       expect(stock.symbol).to eq('ABC')
-      expect(stock.current_eps).to eq('')
-      expect(stock.dividends_per_share).to eq('')
-      expect(stock.day_high_price).to eq('')
-      expect(stock.day_low_price).to eq('')
-      expect(stock.book_value).to eq('')
-      expect(stock.price_to_book_ratio).to eq('')
+      expect(stock.current_eps).to eq(nil)
+      expect(stock.dividends_per_share).to eq(nil)
+      expect(stock.day_high_price).to eq(nil)
+      expect(stock.day_low_price).to eq(nil)
+      expect(stock.book_value).to eq(nil)
+      expect(stock.price_to_book_ratio).to eq(nil)
     end
     it 'enters any NaN as an empty string' do
       stock_hash = {
@@ -70,12 +70,12 @@ RSpec.describe Stock, :type => :model do
       expect(stock.name).to eq('')
       expect(stock.exchange).to eq('')
       expect(stock.symbol).to eq('')
-      expect(stock.current_eps).to eq('')
-      expect(stock.dividends_per_share).to eq('')
-      expect(stock.day_high_price).to eq('')
-      expect(stock.day_low_price).to eq('')
-      expect(stock.book_value).to eq('')
-      expect(stock.price_to_book_ratio).to eq('')
+      expect(stock.current_eps).to eq(nil)
+      expect(stock.dividends_per_share).to eq(nil)
+      expect(stock.day_high_price).to eq(nil)
+      expect(stock.day_low_price).to eq(nil)
+      expect(stock.book_value).to eq(nil)
+      expect(stock.price_to_book_ratio).to eq(nil)
     end
     it 'saves only stocks with names' do
       first_stock = {

@@ -16,11 +16,11 @@ RSpec.describe YahooRawResponseJsonParser do
   second_stock_symbol = "\"AAPL\""
   second_stock_exchange = "\"Nasdaq\""
   second_stock_current_eps = 7.65
-  second_stock_dividends = 1.8114
+  second_stock_dividends = 'nan'
   second_stock_daily_high_price = 107.21
   second_stock_daily_low_price = 108.04
   second_stock_book_value = 19.015
-  second_stock_price_to_book = 12.5
+  second_stock_price_to_book = 'N/A'
   second_stock_price_to_earnings = 55.55
 
   aapl_xom_fake_response =
@@ -54,24 +54,24 @@ RSpec.describe YahooRawResponseJsonParser do
       expect(first_stock[:name]).to eq('Exxon Mobil Corpo')
       expect(first_stock[:symbol]).to eq('XOM')
       expect(first_stock[:exchange]).to eq('NYSE')
-      expect(first_stock[:current_eps]).to eq('7.58')
-      expect(first_stock[:dividends_per_share]).to eq('2.64')
-      expect(first_stock[:day_high_price]).to eq('94.31')
-      expect(first_stock[:day_low_price]).to eq('96.89')
-      expect(first_stock[:book_value]).to eq('42.478')
-      expect(first_stock[:price_to_book_ratio]).to eq('12.4')
-      expect(first_stock[:price_to_earnings_ratio]).to eq('44.44')
+      expect(first_stock[:current_eps]).to eq(7.58)
+      expect(first_stock[:dividends_per_share]).to eq(2.64)
+      expect(first_stock[:day_high_price]).to eq(94.31)
+      expect(first_stock[:day_low_price]).to eq(96.89)
+      expect(first_stock[:book_value]).to eq(42.478)
+      expect(first_stock[:price_to_book_ratio]).to eq(12.4)
+      expect(first_stock[:price_to_earnings_ratio]).to eq(44.44)
 
       expect(second_stock[:name]).to eq('Apple Inc.')
       expect(second_stock[:symbol]).to eq('AAPL')
       expect(second_stock[:exchange]).to eq('Nasdaq')
-      expect(second_stock[:current_eps]).to eq('7.65')
-      expect(second_stock[:dividends_per_share]).to eq('1.8114')
-      expect(second_stock[:day_high_price]).to eq('107.21')
-      expect(second_stock[:day_low_price]).to eq('108.04')
-      expect(second_stock[:book_value]).to eq('19.015')
-      expect(second_stock[:price_to_book_ratio]).to eq('12.5')
-      expect(second_stock[:price_to_earnings_ratio]).to eq('55.55')
+      expect(second_stock[:current_eps]).to eq(7.65)
+      expect(second_stock[:dividends_per_share]).to be_nil
+      expect(second_stock[:day_high_price]).to eq(107.21)
+      expect(second_stock[:day_low_price]).to eq(108.04)
+      expect(second_stock[:book_value]).to eq(19.015)
+      expect(second_stock[:price_to_book_ratio]).to be_nil
+      expect(second_stock[:price_to_earnings_ratio]).to eq(55.55)
     end
   end
 end
