@@ -23,6 +23,6 @@ class YahooRawResponseJsonParser
   private
 
   def self.clean(input)
-    input.eql?('N/A') ? '' : input
+    (input.eql?('N/A') || input.eql?('nan')) ? '' : input
   end
 end
