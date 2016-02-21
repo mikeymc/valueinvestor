@@ -26,4 +26,8 @@ class Stock < ActiveRecord::Base
   def self.sanitize_field(field)
     (field.eql?('N/A') || field.eql?('nan')) ? '' : field
   end
+
+  def google_finance_link
+    "https://www.google.com/finance?q=#{self.symbol}"
+  end
 end

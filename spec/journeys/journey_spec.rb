@@ -15,12 +15,12 @@ RSpec.describe 'finding stocks' do
 
   def sort_by_stock_name
     click_on 'Name'
-    stock = page.find('.stock', text: 'ZYNGA')
+    stock = page.find('.some-stock', text: 'ZYNGA')
     expect(stock.find('.stock-name')).to have_content 'ZYNGA'
   end
 
   def see_3M_stock
-    stock = page.find('.stock', text: '3M COMPANY')
+    stock = page.find('.some-stock', text: '3M COMPANY')
     expect(stock.find('.stock-name')).to have_content '3M COMPANY (MMM)'
     expect(stock.find('.exchange')).to have_content 'NYSE'
     expect(stock.find('.current-eps').text).to match /\d+\.\d+/
@@ -32,6 +32,7 @@ RSpec.describe 'finding stocks' do
     expect(stock.find('.price-to-earnings-ratio').text).to match /\d+\.\d+/
     expect(stock.find('.year-low-price').text).to match /\d+\.\d+/
     expect(stock.find('.year-high-price').text).to match /\d+\.\d+/
+    expect(stock.find('.google-finance-link')).to have_link('Google', :href => 'https://www.google.com/finance?q=MMM')
   end
 
   def see_headers

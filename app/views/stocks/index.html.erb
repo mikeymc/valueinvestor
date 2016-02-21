@@ -18,9 +18,10 @@
           <th align="text-center"><%= sortable "price_to_earnings_ratio", "P/E" %></th>
           <th align="text-center"><%= sortable "year_low_price", "Year Low" %></th>
           <th align="text-center"><%= sortable "year_high_price", "Year High" %></th>
+          <th align="text-center">Google</th>
           <% @stocks.each do |stock| %>
             <div>
-              <tr class="row stock">
+              <tr class="row some-stock">
                 <td class="stock-name"><%= stock.name %> (<%= stock.symbol %>)</td>
                 <td class="exchange"><%= stock.exchange %></td>
                 <td class="current-eps"><%= (stock.current_eps).round(2) unless !stock.current_eps %></td>
@@ -32,6 +33,7 @@
                 <td class="price-to-earnings-ratio"><%= (stock.price_to_earnings_ratio).round(2) unless !stock.price_to_earnings_ratio %></td>
                 <td class="year-low-price"><%= (stock.year_low_price).round(2) unless !stock.year_low_price %></td>
                 <td class="year-high-price"><%= (stock.year_high_price).round(2) unless !stock.year_high_price %></td>
+                <td class="google-finance-link"><a href="<%= stock.google_finance_link %>" target="_blank">Google</a></td>
               </tr>
             </div>
           <% end %>
