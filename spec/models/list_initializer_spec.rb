@@ -9,7 +9,7 @@ RSpec.describe ListInitializer do
       @stocks = Stock.all
       expect(@stocks.size).to eq(3087)
       expect(@stocks.first.symbol).to eq('TFSC')
-      expect(@stocks.first.name).to eq('1347 Capital Corp.')
+      expect(@stocks.first.name).to eq('1347 CAPITAL CORP.')
 
       @stocks.each do |stock|
         expect(stock.exchange).to eq('Nasdaq')
@@ -25,7 +25,7 @@ RSpec.describe ListInitializer do
       @stocks = Stock.all
       expect(@stocks.size).to eq(3240)
       expect(@stocks.first.symbol).to eq('DDD')
-      expect(@stocks.first.name).to eq('3D Systems Corporation')
+      expect(@stocks.first.name).to eq('3D SYSTEMS CORPORATION')
 
       @stocks.each do |stock|
         expect(stock.exchange).to eq('NYSE')

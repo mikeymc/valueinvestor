@@ -53,11 +53,15 @@ GEM
     coffee-script-source (1.10.0)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
+    database_cleaner (1.5.1)
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.6.0)
     factory_girl (4.5.0)
       activesupport (>= 3.0.0)
+    factory_girl_rails (4.6.0)
+      factory_girl (~> 4.5.0)
+      railties (>= 3.0.0)
     ffi (1.9.10)
     hashdiff (0.3.0)
     hike (1.2.3)
@@ -180,7 +184,8 @@ DEPENDENCIES
   bootstrap-sass (~> 3.2.0)
   byebug
   capybara
-  factory_girl
+  database_cleaner
+  factory_girl_rails
   jbuilder (~> 1.2)
   jquery-rails
   poltergeist
