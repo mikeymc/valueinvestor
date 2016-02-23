@@ -1,5 +1,3 @@
-require 'byebug'
-
 class StockDataJoiner
   def join(yahoo_stock_data)
     yahoo_stock_data.each do |yahoo_stock|

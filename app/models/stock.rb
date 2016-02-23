@@ -1,4 +1,6 @@
 class Stock < ActiveRecord::Base
+  has_one :market_watch_data, dependent: :destroy
+
   def self.list_all_symbols
     symbols = []
     Stock.all.each do |stock|

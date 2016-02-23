@@ -122,4 +122,33 @@ RSpec.describe Stock, :type => :model do
       expect(symbols[2]).to eq('GHI')
     end
   end
+  describe 'destroy' do
+    it 'deletes the market watch data too' do
+      create(:stock, symbol: 'AAPL')
+
+      expect(Stock.all.size).to eq(1)
+      expect(MarketWatchData.all.size).to eq(1)
+      expect(Stock.find_by_symbol('AAPL').market_watch_data.average_recommendation).to eq('Buy')
+
+      Stock.find_by_symbol('AAPL').destroy
+
+      expect(Stock.all.size).to eq(0)
+      expect(MarketWatchData.all.size).to eq(0)
+    end
+  end
+
+  describe 'destroy_all' do
+    it 'deletes the market watch data too' do
+      create(:stock, symbol: 'AAPL')
+      create(:stock, symbol: 'XOM')
+
+      expect(Stock.all.size).to eq(2)
+      expect(MarketWatchData.all.size).to eq(2)
+
+      Stock.destroy_all
+
+      expect(Stock.all.size).to eq(0)
+      expect(MarketWatchData.all.size).to eq(0)
+    end
+  end
 end

@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160220043554) do
+ActiveRecord::Schema.define(version: 20160221202353) do
+
+  create_table "market_watch_data", force: true do |t|
+    t.string   "average_recommendation"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "stock_id"
+  end
+
+  add_index "market_watch_data", ["stock_id"], name: "index_market_watch_data_on_stock_id"
 
   create_table "stocks", force: true do |t|
     t.datetime "created_at"
