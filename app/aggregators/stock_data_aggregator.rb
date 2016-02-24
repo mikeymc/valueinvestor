@@ -3,7 +3,11 @@ class StockDataAggregator
     destroy_stocks
     initialize_stocks
     aggregate_yahoo_data
-    fetch_market_watch_data
+    aggregate_market_watch_data
+  end
+
+  def aggregate_market_watch_data
+    MarketWatchDataAggregator.new.aggregate
   end
 
   private
@@ -20,13 +24,5 @@ class StockDataAggregator
 
   def aggregate_yahoo_data
     YahooDataAggregator.new.aggregate
-  end
-
-  def fetch_market_watch_data
-    market_watch_data_fetcher = MarketWatchDataFetcher.new
-    Stock.list_all_symbols.each do |symbol|
-      data = market_watch_data_fetcher.fetch(symbol)
-      MarketWatchDataJoiner.new.join(symbol, data)
-    end
   end
 end
