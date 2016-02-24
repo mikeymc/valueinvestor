@@ -32,4 +32,10 @@ class Stock < ActiveRecord::Base
   def google_finance_link
     "https://www.google.com/finance?q=#{self.symbol}"
   end
+
+  def market_watch_recommendation
+    if self.market_watch_data
+      market_watch_data.average_recommendation
+    end
+  end
 end

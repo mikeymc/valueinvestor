@@ -21,8 +21,7 @@ RSpec.describe 'finding stocks' do
 
   def see_3M_stock
     stock = page.find('.some-stock', text: '3M COMPANY')
-    expect(stock.find('.stock-name')).to have_content '3M COMPANY (MMM)'
-    expect(stock.find('.exchange')).to have_content 'NYSE'
+    expect(stock.find('.stock-name')).to have_content '3M COMPANY (MMM) NYSE'
     expect(stock.find('.current-eps').text).to match /\d+\.\d+/
     expect(stock.find('.dividends-amount').text).to match /\d+\.\d+/
     expect(stock.find('.day-high-price').text).to match /\d+\.\d+/
@@ -32,13 +31,11 @@ RSpec.describe 'finding stocks' do
     expect(stock.find('.price-to-earnings-ratio').text).to match /\d+\.\d+/
     expect(stock.find('.year-low-price').text).to match /\d+\.\d+/
     expect(stock.find('.year-high-price').text).to match /\d+\.\d+/
-    expect(stock.find('.google-finance-link')).to have_link('Google', :href => 'https://www.google.com/finance?q=MMM')
   end
 
   def see_headers
     expected_row_headers = [
       'Name',
-      'Exchange',
       'EPS',
       'Dividends/Share',
       'Day High',

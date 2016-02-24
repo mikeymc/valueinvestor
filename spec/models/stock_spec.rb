@@ -124,7 +124,7 @@ RSpec.describe Stock, :type => :model do
   end
   describe 'destroy' do
     it 'deletes the market watch data too' do
-      create(:stock, symbol: 'AAPL')
+      create(:stock, symbol: 'AAPL', market_watch_data: create(:market_watch_data))
 
       expect(Stock.all.size).to eq(1)
       expect(MarketWatchData.all.size).to eq(1)
@@ -139,8 +139,8 @@ RSpec.describe Stock, :type => :model do
 
   describe 'destroy_all' do
     it 'deletes the market watch data too' do
-      create(:stock, symbol: 'AAPL')
-      create(:stock, symbol: 'XOM')
+      create(:stock, symbol: 'AAPL', market_watch_data: create(:market_watch_data))
+      create(:stock, symbol: 'XOM', market_watch_data: create(:market_watch_data))
 
       expect(Stock.all.size).to eq(2)
       expect(MarketWatchData.all.size).to eq(2)

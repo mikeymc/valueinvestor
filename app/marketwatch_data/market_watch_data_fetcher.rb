@@ -1,7 +1,11 @@
 class MarketWatchDataFetcher
   def fetch(symbol)
     agent = Mechanize.new
-    page = agent.get("http://www.marketwatch.com/investing/stock/#{symbol}/analystestimates")
-    {average_recommendation: page.search('.recommendation').text.strip}
+    begin
+      page = agent.get("http://www.marketwatch.com/investing/stock/#{symbol}/analystestimates")
+      {average_recommendation: page.search('.recommendation').text.strip}
+    rescue
+      nil
+    end
   end
 end
