@@ -3,6 +3,7 @@ class StocksController < ApplicationController
 
   def index
     @stocks = Stock
+                .includes(:yahoo_data)
                 .where.not(sort_column.to_sym => '')
                 .order(sort_column + ' ' + sort_direction)
                 .paginate(:page => params[:page], :per_page => 20)
