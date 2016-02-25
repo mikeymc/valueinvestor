@@ -22,7 +22,7 @@ RSpec.describe StockDataAggregator do
     expect_any_instance_of(MarketWatchDataFetcher).to receive(:fetch).with('TIF').and_return({average_recommendation: 'Hold'})
     StockDataAggregator.new.aggregate
 
-    expect(Stock.find_by_symbol('AAPL').book_value.to_s).to match(/\d+\.\d+/)
+    expect(Stock.find_by_symbol('AAPL').yahoo_data.book_value.to_s).to match(/\d+\.\d+/)
 
     expect(Stock.find_by_symbol('AAPL').market_watch_data.average_recommendation).to eq('Buy')
     expect(Stock.find_by_symbol('TIF').market_watch_data.average_recommendation).to eq('Hold')

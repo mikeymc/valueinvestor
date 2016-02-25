@@ -3,7 +3,7 @@ class MarketWatchDataJoiner
     unless data.nil?
       stock = Stock.find_by_symbol(symbol)
       stock.market_watch_data = MarketWatchData.new(data)
-      stock.save!
+      stock.market_watch_data.save!
     end
   end
 end

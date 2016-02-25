@@ -23,7 +23,7 @@ RSpec.describe ListInitializer do
       @initializer.initialize_nyse_list
 
       @stocks = Stock.all
-      expect(@stocks.size).to eq(3240)
+      expect(@stocks.size).to eq(3239)
       expect(@stocks.first.symbol).to eq('DDD')
       expect(@stocks.first.name).to eq('3D SYSTEMS CORPORATION')
 

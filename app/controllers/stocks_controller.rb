@@ -6,10 +6,11 @@ class StocksController < ApplicationController
                 .where.not(sort_column.to_sym => '')
                 .order(sort_column + ' ' + sort_direction)
                 .paginate(:page => params[:page], :per_page => 20)
+    @stocks
   end
 
   def sort_column
-    Stock.column_names.include?(params[:sort]) ? params[:sort] : 'name'
+    params[:sort] ? params[:sort] : 'name'
   end
 
   def sort_direction

@@ -8,15 +8,15 @@
         <table class="table-striped table-bordered all-stocks-table">
           <th align="text-center"></th>
           <th align="text-center"><%= sortable "name" %></th>
-          <th align="text-center"><%= sortable "current_eps", "EPS" %></th>
-          <th align="text-center"><%= sortable "dividends_per_share", "Dividends/Share" %></th>
-          <th align="text-center"><%= sortable "day_high_price", "Day High" %></th>
-          <th align="text-center"><%= sortable "day_low_price", "Day Low" %></th>
-          <th align="text-center"><%= sortable "book_value" %></th>
-          <th align="text-center"><%= sortable "price_to_book_ratio", "Price/Book" %></th>
-          <th align="text-center"><%= sortable "price_to_earnings_ratio", "P/E" %></th>
-          <th align="text-center"><%= sortable "year_low_price", "Year Low" %></th>
-          <th align="text-center"><%= sortable "year_high_price", "Year High" %></th>
+          <th align="text-center"><%= sortable "yahoo_data.current_eps", "EPS" %></th>
+          <th align="text-center"><%= sortable "yahoo_data.dividends_per_share", "Dividends/Share" %></th>
+          <th align="text-center"><%= sortable "yahoo_data.day_high_price", "Day High" %></th>
+          <th align="text-center"><%= sortable "yahoo_data.day_low_price", "Day Low" %></th>
+          <th align="text-center"><%= sortable "yahoo_data.book_value", "Book Value" %></th>
+          <th align="text-center"><%= sortable "yahoo_data.price_to_book_ratio", "Price/Book" %></th>
+          <th align="text-center"><%= sortable "yahoo_data.price_to_earnings_ratio", "P/E" %></th>
+          <th align="text-center"><%= sortable "yahoo_data.year_low_price", "Year Low" %></th>
+          <th align="text-center"><%= sortable "yahoo_data.year_high_price", "Year High" %></th>
           <th align="text-center"><%= sortable "market_watch__data.average_recommendation", "MarketWatch Recommendation" %></th>
           <% @stocks.each do |stock| %>
             <div>
@@ -24,15 +24,15 @@
                 <td class="stock-name">
                   <a href="<%= stock.google_finance_link %>" target="_blank"> <%= stock.name %> </a> (<%= stock.symbol %>) <i><%=stock.exchange %></i>
                 </td>
-                <td class="current-eps"><%= (stock.current_eps).round(2) unless !stock.current_eps %></td>
-                <td class="dividends-amount"><%= (stock.dividends_per_share).round(2) unless !stock.dividends_per_share %></td>
-                <td class="day-high-price"><%= (stock.day_high_price).round(2) unless !stock.day_high_price %></td>
-                <td class="day-low-price"><%= (stock.day_low_price).round(2) unless !stock.day_low_price %></td>
-                <td class="book-value"><%= (stock.book_value).round(2) unless !stock.book_value %></td>
-                <td class="price-to-book-ratio"><%= (stock.price_to_book_ratio).round(2) unless !stock.price_to_book_ratio %></td>
-                <td class="price-to-earnings-ratio"><%= (stock.price_to_earnings_ratio).round(2) unless !stock.price_to_earnings_ratio %></td>
-                <td class="year-low-price"><%= (stock.year_low_price).round(2) unless !stock.year_low_price %></td>
-                <td class="year-high-price"><%= (stock.year_high_price).round(2) unless !stock.year_high_price %></td>
+                <td class="current-eps"><%= (stock.yahoo_data.current_eps).round(2) unless !stock.yahoo_data.current_eps %></td>
+                <td class="dividends-amount"><%= (stock.yahoo_data.dividends_per_share).round(2) unless !stock.yahoo_data.dividends_per_share %></td>
+                <td class="day-high-price"><%= (stock.yahoo_data.day_high_price).round(2) unless !stock.yahoo_data.day_high_price %></td>
+                <td class="day-low-price"><%= (stock.yahoo_data.day_low_price).round(2) unless !stock.yahoo_data.day_low_price %></td>
+                <td class="book-value"><%= (stock.yahoo_data.book_value).round(2) unless !stock.yahoo_data.book_value %></td>
+                <td class="price-to-book-ratio"><%= (stock.yahoo_data.price_to_book_ratio).round(2) unless !stock.yahoo_data.price_to_book_ratio %></td>
+                <td class="price-to-earnings-ratio"><%= (stock.yahoo_data.price_to_earnings_ratio).round(2) unless !stock.yahoo_data.price_to_earnings_ratio %></td>
+                <td class="year-low-price"><%= (stock.yahoo_data.year_low_price).round(2) unless !stock.yahoo_data.year_low_price %></td>
+                <td class="year-high-price"><%= (stock.yahoo_data.year_high_price).round(2) unless !stock.yahoo_data.year_high_price %></td>
                 <td><a href="<%= "http://www.marketwatch.com/investing/stock/#{stock.symbol}/analystestimates" %>" target="_blank"><%= (stock.market_watch_recommendation) %></a></td>
               </tr>
             </div>
