@@ -47,7 +47,7 @@ RSpec.describe 'finding stocks' do
       'Name',
       'Last Trade Price',
       'EPS',
-      'Dividends/Share',
+      'Dividend',
       'Dividend Yield (%)',
       'EBITDA',
       'Market Cap',
