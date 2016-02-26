@@ -36,12 +36,12 @@ class YahooStockDataFetcher
       :last_trade_price => 'l1',
       :ebitda => 'j4',
       :market_cap => 'j1',
-      :one_year_target_price => 't8'
+      :one_year_target_price => 't8',
+      :fifty_day_moving_average => 'm3'
     }.values.join('')
   end
 end
 
+# % change from 50 day moving average: m8
 # 200 day moving average: m4
 # % change from 200 day moving average: m6
-# 50 day moving average: m3
-# % change from 50 day moving average: m8

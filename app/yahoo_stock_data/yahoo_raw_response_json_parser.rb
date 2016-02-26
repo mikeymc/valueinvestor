@@ -20,7 +20,8 @@ class YahooRawResponseJsonParser
         last_trade_price: convert_to_number(stock[12]),
         ebitda: stock[13],
         market_cap: stock[14],
-        one_year_target_price: convert_to_number(stock[15])
+        one_year_target_price: convert_to_number(stock[15]),
+        fifty_day_moving_average: convert_to_number(stock[16])
       }
     end
   end
