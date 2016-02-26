@@ -32,7 +32,16 @@ class YahooStockDataFetcher
       :price_to_book_ratio => 'p6',
       :price_to_earnings_ratio => 'r',
       :yearly_low_price => 'j',
-      :yearly_high_price => 'k'
+      :yearly_high_price => 'k',
+      :last_trade_price => 'l1',
+      :ebitda => 'j4'
     }.values.join('')
   end
 end
+
+# market cap: j3,
+# 1yr target price: t8
+# 200 day moving average: m4
+# % change from 200 day moving average: m6
+# 50 day moving average: m3
+# % change from 50 day moving average: m8

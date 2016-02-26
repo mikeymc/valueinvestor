@@ -14,6 +14,8 @@ RSpec.describe YahooStockDataFetcher do
     first_stock_price_to_earnings = 44.44
     first_stock_yearly_low_price = 20.4
     first_stock_yearly_high_price = 30.5
+    first_stock_ebitda = "\"1.01B\""
+    first_stock_last_trade_price = 65.12
 
     second_stock_name = "\"Apple Inc.\""
     second_stock_symbol = "\"AAPL\""
@@ -27,17 +29,49 @@ RSpec.describe YahooStockDataFetcher do
     second_stock_price_to_earnings = 55.55
     second_stock_yearly_low_price = 40.4
     second_stock_yearly_high_price = 50.5
+    second_stock_ebitda = "\"82.79B\""
+    second_stock_last_trade_price = 96.76
 
-    aapl_xom_fake_response = "#{first_stock_name},#{first_stock_symbol},#{first_stock_exchange},#{first_stock_current_eps},#{first_stock_dividends},#{first_stock_daily_high_price},#{first_stock_daily_low_price},#{first_stock_book_value},#{first_stock_price_to_book},#{first_stock_price_to_earnings},#{first_stock_yearly_low_price},#{first_stock_yearly_high_price}\n#{second_stock_name},#{second_stock_symbol},#{second_stock_exchange},#{second_stock_current_eps},#{second_stock_dividends},#{second_stock_daily_high_price},#{second_stock_daily_low_price},#{second_stock_book_value},#{second_stock_price_to_book},#{second_stock_price_to_earnings},#{second_stock_yearly_low_price},#{second_stock_yearly_high_price}\n"
+    aapl_xom_fake_response = ''
+
+    aapl_xom_fake_response << "#{first_stock_name},"
+    aapl_xom_fake_response << "#{first_stock_symbol},"
+    aapl_xom_fake_response << "#{first_stock_exchange},"
+    aapl_xom_fake_response << "#{first_stock_current_eps},"
+    aapl_xom_fake_response << "#{first_stock_dividends},"
+    aapl_xom_fake_response << "#{first_stock_daily_high_price},"
+    aapl_xom_fake_response << "#{first_stock_daily_low_price},"
+    aapl_xom_fake_response << "#{first_stock_book_value},"
+    aapl_xom_fake_response << "#{first_stock_price_to_book},"
+    aapl_xom_fake_response << "#{first_stock_price_to_earnings},"
+    aapl_xom_fake_response << "#{first_stock_yearly_low_price},"
+    aapl_xom_fake_response << "#{first_stock_yearly_high_price},"
+    aapl_xom_fake_response << "#{first_stock_last_trade_price},"
+    aapl_xom_fake_response << "#{first_stock_ebitda}\n"
+
+    aapl_xom_fake_response << "#{second_stock_name},"
+    aapl_xom_fake_response << "#{second_stock_symbol},"
+    aapl_xom_fake_response << "#{second_stock_exchange},"
+    aapl_xom_fake_response << "#{second_stock_current_eps},"
+    aapl_xom_fake_response << "#{second_stock_dividends},"
+    aapl_xom_fake_response << "#{second_stock_daily_high_price},"
+    aapl_xom_fake_response << "#{second_stock_daily_low_price},"
+    aapl_xom_fake_response << "#{second_stock_book_value},"
+    aapl_xom_fake_response << "#{second_stock_price_to_book},"
+    aapl_xom_fake_response << "#{second_stock_price_to_earnings},"
+    aapl_xom_fake_response << "#{second_stock_yearly_low_price},"
+    aapl_xom_fake_response << "#{second_stock_yearly_high_price},"
+    aapl_xom_fake_response << "#{second_stock_last_trade_price},"
+    aapl_xom_fake_response << "#{second_stock_ebitda}\n"
 
     WebMock
       .disable_net_connect!
     WebMock
-    .stub_request(:get, 'http://download.finance.yahoo.com/d/quotes.csv?f=nsxe7dhgb4p6rjk&s=TIF%2BAAPL%2BXOM%2BABC%2BDEF%2BGHI%2BJKL%2BMNO%2BPQR%2BSTU%2BVWX%2BYZ')
+      .stub_request(:get, 'http://download.finance.yahoo.com/d/quotes.csv?f=nsxe7dhgb4p6rjkl1j4&s=TIF%2BAAPL')
       .to_return(status: 200, body: aapl_xom_fake_response, headers: {})
 
     @fetcher = YahooStockDataFetcher.new
-    data = @fetcher.fetch_stock_data(['TIF', 'AAPL', 'XOM', 'ABC', 'DEF', 'GHI', 'JKL', 'MNO', 'PQR', 'STU', 'VWX', 'YZ'])
+    data = @fetcher.fetch_stock_data(['TIF', 'AAPL'])
 
     first_stock = data[0]
     expect(first_stock[:name]).to eq('Tiffany & Co. Common Stock')
@@ -52,6 +86,8 @@ RSpec.describe YahooStockDataFetcher do
     expect(first_stock[:price_to_earnings_ratio]).to eq(44.44)
     expect(first_stock[:year_low_price]).to eq(20.4)
     expect(first_stock[:year_high_price]).to eq(30.5)
+    expect(first_stock[:ebitda]).to eq('1.01B')
+    expect(first_stock[:last_trade_price]).to eq(65.12)
 
     second_stock = data[1]
     expect(second_stock[:name]).to eq('Apple Inc.')
@@ -66,5 +102,7 @@ RSpec.describe YahooStockDataFetcher do
     expect(second_stock[:price_to_earnings_ratio]).to eq(55.55)
     expect(second_stock[:year_low_price]).to eq(40.4)
     expect(second_stock[:year_high_price]).to eq(50.5)
+    expect(second_stock[:ebitda]).to eq('82.79B')
+    expect(second_stock[:last_trade_price]).to eq(96.76)
   end
 end

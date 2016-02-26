@@ -1,4 +1,5 @@
 require 'CSV'
+require 'byebug'
 
 class YahooRawResponseJsonParser
   def self.parse(response)
@@ -15,7 +16,9 @@ class YahooRawResponseJsonParser
         price_to_book_ratio: convert_to_number(stock[8]),
         price_to_earnings_ratio: convert_to_number(stock[9]),
         year_low_price: convert_to_number(stock[10]),
-        year_high_price: convert_to_number(stock[11])
+        year_high_price: convert_to_number(stock[11]),
+        last_trade_price: convert_to_number(stock[12]),
+        ebitda: stock[13]
       }
     end
   end
