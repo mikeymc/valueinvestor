@@ -40,7 +40,8 @@ class YahooStockDataFetcher
       :fifty_day_moving_average => 'm3',
       :percent_change_from_fifty_day_moving_average => 'm8',
       :two_hundred_day_moving_average => 'm4',
-      :percent_change_from_two_hundred_day_moving_average => 'm6'
+      :percent_change_from_two_hundred_day_moving_average => 'm6',
+      :dividend_yield => 'y'
     }.values.join('')
   end
 end

@@ -22,6 +22,7 @@ RSpec.describe YahooStockDataFetcher do
     first_stock_percent_change_from_fifty_day_moving_average = "\"+1.38%\""
     first_stock_two_hundred_day_moving_average = 75.94
     first_stock_percent_change_from_two_hundred_day_moving_average = -14.25
+    first_stock_dividend_yield = 1.23
 
     second_stock_name = "\"Apple Inc.\""
     second_stock_symbol = "\"AAPL\""
@@ -43,6 +44,7 @@ RSpec.describe YahooStockDataFetcher do
     second_stock_percent_change_from_fifty_day_moving_average = "\"+0.22%\""
     second_stock_two_hundred_day_moving_average = 109.26
     second_stock_percent_change_from_two_hundred_day_moving_average = -11.44
+    second_stock_dividend_yield = 2.34
 
     aapl_xom_fake_response = ''
 
@@ -65,7 +67,8 @@ RSpec.describe YahooStockDataFetcher do
     aapl_xom_fake_response << "#{first_stock_fifty_day_moving_average},"
     aapl_xom_fake_response << "#{first_stock_percent_change_from_fifty_day_moving_average},"
     aapl_xom_fake_response << "#{first_stock_two_hundred_day_moving_average},"
-    aapl_xom_fake_response << "#{first_stock_percent_change_from_two_hundred_day_moving_average}\n"
+    aapl_xom_fake_response << "#{first_stock_percent_change_from_two_hundred_day_moving_average},"
+    aapl_xom_fake_response << "#{first_stock_dividend_yield}\n"
 
     aapl_xom_fake_response << "#{second_stock_name},"
     aapl_xom_fake_response << "#{second_stock_symbol},"
@@ -86,10 +89,11 @@ RSpec.describe YahooStockDataFetcher do
     aapl_xom_fake_response << "#{second_stock_fifty_day_moving_average},"
     aapl_xom_fake_response << "#{second_stock_percent_change_from_fifty_day_moving_average},"
     aapl_xom_fake_response << "#{second_stock_two_hundred_day_moving_average},"
-    aapl_xom_fake_response << "#{second_stock_percent_change_from_two_hundred_day_moving_average}\n"
+    aapl_xom_fake_response << "#{second_stock_percent_change_from_two_hundred_day_moving_average},"
+    aapl_xom_fake_response << "#{second_stock_dividend_yield}\n"
 
     WebMock
-      .stub_request(:get, 'http://download.finance.yahoo.com/d/quotes.csv?f=nsxe7dhgb4p6rjkl1j4j1t8m3m8m4m6&s=TIF%2BAAPL')
+      .stub_request(:get, 'http://download.finance.yahoo.com/d/quotes.csv?f=nsxe7dhgb4p6rjkl1j4j1t8m3m8m4m6y&s=TIF%2BAAPL')
       .to_return(status: 200, body: aapl_xom_fake_response, headers: {})
 
     @fetcher = YahooStockDataFetcher.new
@@ -116,6 +120,7 @@ RSpec.describe YahooStockDataFetcher do
     expect(first_stock[:percent_change_from_fifty_day_moving_average]).to eq(1.38)
     expect(first_stock[:two_hundred_day_moving_average]).to eq(75.94)
     expect(first_stock[:percent_change_from_two_hundred_day_moving_average]).to eq(-14.25)
+    expect(first_stock[:dividend_yield]).to eq(1.23)
 
     second_stock = data[1]
     expect(second_stock[:name]).to eq('Apple Inc.')
@@ -138,5 +143,6 @@ RSpec.describe YahooStockDataFetcher do
     expect(second_stock[:percent_change_from_fifty_day_moving_average]).to eq(0.22)
     expect(second_stock[:two_hundred_day_moving_average]).to eq(109.26)
     expect(second_stock[:percent_change_from_two_hundred_day_moving_average]).to eq(-11.44)
+    expect(second_stock[:dividend_yield]).to eq(2.34)
   end
 end

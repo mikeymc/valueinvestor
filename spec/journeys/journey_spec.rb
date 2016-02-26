@@ -34,6 +34,7 @@ RSpec.describe 'finding stocks' do
     expect(stock.find('.ebitda').text).to match /\d+\.\d+\D/
     expect(stock.find('.market-cap').text).to match /\d+\.\d+\D/
     expect(stock.find('.one-year-target-price').text).to match /\d+\.\d+/
+    expect(stock.find('.dividend-yield').text).to match /\d+\.\d+/
     expect(stock.find('.fifty-day-moving-average').text).to match /\d+\.\d+/
     expect(stock.find('.percent-change-from-fifty-day-moving-average').text).to match /\d+\.\d+/
     expect(stock.find('.two-hundred-day-moving-average').text).to match /\d+\.\d+/
@@ -45,6 +46,7 @@ RSpec.describe 'finding stocks' do
       'Name',
       'EPS',
       'Dividends/Share',
+      'Dividend Yield (%)',
       'EBITDA',
       'Market Cap',
       '1Y Target',

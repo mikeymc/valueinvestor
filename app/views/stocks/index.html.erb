@@ -10,6 +10,7 @@
           <th align="text-center"><%= sortable "name" %></th>
           <th align="text-center"><%= sortable "yahoo_data.current_eps", "EPS" %></th>
           <th align="text-center"><%= sortable "yahoo_data.dividends_per_share", "Dividends/Share" %></th>
+          <th align="text-center">Dividend Yield (%)</th>
           <th align="text-center"><%= sortable "yahoo_data.day_high_price", "Day High" %></th>
           <th align="text-center"><%= sortable "yahoo_data.day_low_price", "Day Low" %></th>
           <th align="text-center"><%= sortable "yahoo_data.book_value", "Book Value" %></th>
@@ -33,6 +34,7 @@
                 </td>
                 <td class="current-eps"><%= (stock.yahoo_data.current_eps).round(2) unless !stock.yahoo_data.current_eps %></td>
                 <td class="dividends-amount"><%= (stock.yahoo_data.dividends_per_share).round(2) unless !stock.yahoo_data.dividends_per_share %></td>
+                <td class="dividend-yield"><%= (stock.yahoo_data.dividend_yield).round(2) unless !stock.yahoo_data.dividend_yield %></td>
                 <td class="day-high-price"><%= (stock.yahoo_data.day_high_price).round(2) unless !stock.yahoo_data.day_high_price %></td>
                 <td class="day-low-price"><%= (stock.yahoo_data.day_low_price).round(2) unless !stock.yahoo_data.day_low_price %></td>
                 <td class="book-value"><%= (stock.yahoo_data.book_value).round(2) unless !stock.yahoo_data.book_value %></td>

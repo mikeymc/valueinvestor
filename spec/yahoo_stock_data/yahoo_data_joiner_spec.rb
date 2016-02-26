@@ -26,6 +26,7 @@ RSpec.describe YahooDataJoiner do
     first_stock[:percent_change_from_fifty_day_moving_average] = 1.23
     first_stock[:two_hundred_day_moving_average] = 103.22
     first_stock[:percent_change_from_two_hundred_day_moving_average] = 3.21
+    first_stock[:dividend_yield] = 5.67
 
     second_stock = {}
     second_stock[:name] = 'The Gap'
@@ -48,6 +49,7 @@ RSpec.describe YahooDataJoiner do
     second_stock[:percent_change_from_fifty_day_moving_average] = nil
     second_stock[:two_hundred_day_moving_average] = nil
     second_stock[:percent_change_from_two_hundred_day_moving_average] = nil
+    second_stock[:dividend_yield] = nil
 
     stock_data_from_yahoo = [first_stock, second_stock]
 
@@ -77,6 +79,7 @@ RSpec.describe YahooDataJoiner do
     expect(tif_stock.yahoo_data.percent_change_from_fifty_day_moving_average).to eq(1.23)
     expect(tif_stock.yahoo_data.two_hundred_day_moving_average).to eq(103.22)
     expect(tif_stock.yahoo_data.percent_change_from_two_hundred_day_moving_average).to eq(3.21)
+    expect(tif_stock.yahoo_data.dividend_yield).to eq(5.67)
 
     expect(rgdx_stock.name).to eq('The Gap')
     expect(rgdx_stock.symbol).to eq('RGDX')
@@ -98,5 +101,6 @@ RSpec.describe YahooDataJoiner do
     expect(rgdx_stock.yahoo_data.percent_change_from_fifty_day_moving_average).to eq(nil)
     expect(rgdx_stock.yahoo_data.two_hundred_day_moving_average).to eq(nil)
     expect(rgdx_stock.yahoo_data.percent_change_from_two_hundred_day_moving_average).to eq(nil)
+    expect(rgdx_stock.yahoo_data.dividend_yield).to eq(nil)
   end
 end

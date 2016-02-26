@@ -24,7 +24,8 @@ class YahooRawResponseJsonParser
         fifty_day_moving_average: convert_to_number(stock[16]),
         percent_change_from_fifty_day_moving_average: convert_to_number(stock[17]),
         two_hundred_day_moving_average: convert_to_number(stock[18]),
-        percent_change_from_two_hundred_day_moving_average: convert_to_number(stock[19])
+        percent_change_from_two_hundred_day_moving_average: convert_to_number(stock[19]),
+        dividend_yield: convert_to_number(stock[20])
       }
     end
   end

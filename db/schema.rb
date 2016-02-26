@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160226061057) do
+ActiveRecord::Schema.define(version: 20160226064930) do
 
   create_table "market_watch_data", force: true do |t|
     t.string   "average_recommendation"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 20160226061057) do
     t.decimal "two_hundred_day_moving_average"
     t.decimal "percent_change_from_two_hundred_day_moving_average"
     t.decimal "last_trade_price"
+    t.decimal "dividend_yield"
   end
 
   add_index "yahoo_data", ["stock_id"], name: "index_yahoo_data_on_stock_id"

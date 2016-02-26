@@ -20,6 +20,7 @@ class YahooDataJoiner
       stock.yahoo_data.percent_change_from_fifty_day_moving_average = yahoo_stock[:percent_change_from_fifty_day_moving_average]
       stock.yahoo_data.two_hundred_day_moving_average = yahoo_stock[:two_hundred_day_moving_average]
       stock.yahoo_data.percent_change_from_two_hundred_day_moving_average = yahoo_stock[:percent_change_from_two_hundred_day_moving_average]
+      stock.yahoo_data.dividend_yield = yahoo_stock[:dividend_yield]
       stock.yahoo_data.save!
     end
   end
