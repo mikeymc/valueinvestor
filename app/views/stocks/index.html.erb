@@ -18,6 +18,13 @@
           <th align="text-center"><%= sortable "yahoo_data.year_low_price", "Year Low" %></th>
           <th align="text-center"><%= sortable "yahoo_data.year_high_price", "Year High" %></th>
           <th align="text-center"><%= sortable "market_watch__data.average_recommendation", "MarketWatch Recommendation" %></th>
+          <th align="text-center">EBITDA</th>
+          <th align="text-center">Market Cap</th>
+          <th align="text-center">1Y Target</th>
+          <th align="text-center">50-day Moving Average</th>
+          <th align="text-center">% Change from 50-day Moving Average</th>
+          <th align="text-center">200-day Moving Average</th>
+          <th align="text-center">% Change from 200-day Moving Average</th>
           <% @stocks.each do |stock| %>
             <div>
               <tr class="row some-stock">
@@ -34,6 +41,13 @@
                 <td class="year-low-price"><%= (stock.yahoo_data.year_low_price).round(2) unless !stock.yahoo_data.year_low_price %></td>
                 <td class="year-high-price"><%= (stock.yahoo_data.year_high_price).round(2) unless !stock.yahoo_data.year_high_price %></td>
                 <td><a href="<%= "http://www.marketwatch.com/investing/stock/#{stock.symbol}/analystestimates" %>" target="_blank"><%= (stock.market_watch_recommendation) %></a></td>
+                <td class="ebitda"><%= (stock.yahoo_data.ebitda) unless !stock.yahoo_data.ebitda %></td>
+                <td class="market-cap"><%= (stock.yahoo_data.market_cap) unless !stock.yahoo_data.market_cap %></td>
+                <td class="one-year-target-price"><%= (stock.yahoo_data.one_year_target_price).round(2) unless !stock.yahoo_data.one_year_target_price %></td>
+                <td class="fifty-day-moving-average"><%= (stock.yahoo_data.fifty_day_moving_average).round(2) unless !stock.yahoo_data.fifty_day_moving_average %></td>
+                <td class="percent-change-from-fifty-day-moving-average"><%= (stock.yahoo_data.percent_change_from_fifty_day_moving_average).round(2) unless !stock.yahoo_data.percent_change_from_fifty_day_moving_average %></td>
+                <td class="two-hundred-day-moving-average"><%= (stock.yahoo_data.two_hundred_day_moving_average).round(2) unless !stock.yahoo_data.two_hundred_day_moving_average %></td>
+                <td class="percent-change-from-two-hundred-day-moving-average"><%= (stock.yahoo_data.percent_change_from_two_hundred_day_moving_average).round(2) unless !stock.yahoo_data.percent_change_from_two_hundred_day_moving_average %></td>
               </tr>
             </div>
           <% end %>

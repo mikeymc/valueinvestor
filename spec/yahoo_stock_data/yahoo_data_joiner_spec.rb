@@ -18,6 +18,14 @@ RSpec.describe YahooDataJoiner do
     first_stock[:price_to_earnings_ratio] = 44.44
     first_stock[:year_low_price] = 100.11
     first_stock[:year_high_price] = 200.11
+    first_stock[:last_trade_price] = 1.23
+    first_stock[:ebitda] = '1.23B'
+    first_stock[:market_cap] = '100.2B'
+    first_stock[:one_year_target_price] = 99.89
+    first_stock[:fifty_day_moving_average] = 101.11
+    first_stock[:percent_change_from_fifty_day_moving_average] = 1.23
+    first_stock[:two_hundred_day_moving_average] = 103.22
+    first_stock[:percent_change_from_two_hundred_day_moving_average] = 3.21
 
     second_stock = {}
     second_stock[:name] = 'The Gap'
@@ -32,6 +40,14 @@ RSpec.describe YahooDataJoiner do
     second_stock[:price_to_earnings_ratio] = nil
     second_stock[:year_low_price] = nil
     second_stock[:year_high_price] = nil
+    second_stock[:last_trade_price] = nil
+    second_stock[:ebitda] = nil
+    second_stock[:market_cap] = nil
+    second_stock[:one_year_target_price] = nil
+    second_stock[:fifty_day_moving_average] = nil
+    second_stock[:percent_change_from_fifty_day_moving_average] = nil
+    second_stock[:two_hundred_day_moving_average] = nil
+    second_stock[:percent_change_from_two_hundred_day_moving_average] = nil
 
     stock_data_from_yahoo = [first_stock, second_stock]
 
@@ -53,6 +69,14 @@ RSpec.describe YahooDataJoiner do
     expect(tif_stock.yahoo_data.price_to_earnings_ratio).to eq(44.44)
     expect(tif_stock.yahoo_data.year_low_price).to eq(100.11)
     expect(tif_stock.yahoo_data.year_high_price).to eq(200.11)
+    expect(tif_stock.yahoo_data.last_trade_price).to eq(1.23)
+    expect(tif_stock.yahoo_data.ebitda).to eq('1.23B')
+    expect(tif_stock.yahoo_data.market_cap).to eq('100.2B')
+    expect(tif_stock.yahoo_data.one_year_target_price).to eq(99.89)
+    expect(tif_stock.yahoo_data.fifty_day_moving_average).to eq(101.11)
+    expect(tif_stock.yahoo_data.percent_change_from_fifty_day_moving_average).to eq(1.23)
+    expect(tif_stock.yahoo_data.two_hundred_day_moving_average).to eq(103.22)
+    expect(tif_stock.yahoo_data.percent_change_from_two_hundred_day_moving_average).to eq(3.21)
 
     expect(rgdx_stock.name).to eq('The Gap')
     expect(rgdx_stock.symbol).to eq('RGDX')
@@ -66,5 +90,13 @@ RSpec.describe YahooDataJoiner do
     expect(rgdx_stock.yahoo_data.price_to_earnings_ratio).to eq(nil)
     expect(rgdx_stock.yahoo_data.year_low_price).to eq(nil)
     expect(rgdx_stock.yahoo_data.year_high_price).to eq(nil)
+    expect(rgdx_stock.yahoo_data.last_trade_price).to eq(nil)
+    expect(rgdx_stock.yahoo_data.ebitda).to eq(nil)
+    expect(rgdx_stock.yahoo_data.market_cap).to eq(nil)
+    expect(rgdx_stock.yahoo_data.one_year_target_price).to eq(nil)
+    expect(rgdx_stock.yahoo_data.fifty_day_moving_average).to eq(nil)
+    expect(rgdx_stock.yahoo_data.percent_change_from_fifty_day_moving_average).to eq(nil)
+    expect(rgdx_stock.yahoo_data.two_hundred_day_moving_average).to eq(nil)
+    expect(rgdx_stock.yahoo_data.percent_change_from_two_hundred_day_moving_average).to eq(nil)
   end
 end

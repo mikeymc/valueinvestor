@@ -31,6 +31,13 @@ RSpec.describe 'finding stocks' do
     expect(stock.find('.price-to-earnings-ratio').text).to match /\d+\.\d+/
     expect(stock.find('.year-low-price').text).to match /\d+\.\d+/
     expect(stock.find('.year-high-price').text).to match /\d+\.\d+/
+    expect(stock.find('.ebitda').text).to match /\d+\.\d+\D/
+    expect(stock.find('.market-cap').text).to match /\d+\.\d+\D/
+    expect(stock.find('.one-year-target-price').text).to match /\d+\.\d+/
+    expect(stock.find('.fifty-day-moving-average').text).to match /\d+\.\d+/
+    expect(stock.find('.percent-change-from-fifty-day-moving-average').text).to match /\d+\.\d+/
+    expect(stock.find('.two-hundred-day-moving-average').text).to match /\d+\.\d+/
+    expect(stock.find('.percent-change-from-two-hundred-day-moving-average').text).to match /\d+\.\d+/
   end
 
   def see_headers
@@ -38,6 +45,13 @@ RSpec.describe 'finding stocks' do
       'Name',
       'EPS',
       'Dividends/Share',
+      'EBITDA',
+      'Market Cap',
+      '1Y Target',
+      '50-day Moving Average',
+      '% Change from 50-day Moving Average',
+      '200-day Moving Average',
+      '% Change from 200-day Moving Average',
       'Day High',
       'Day Low',
       'Book Value',
