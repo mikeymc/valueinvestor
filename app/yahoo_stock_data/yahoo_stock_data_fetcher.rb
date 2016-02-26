@@ -39,9 +39,8 @@ class YahooStockDataFetcher
       :one_year_target_price => 't8',
       :fifty_day_moving_average => 'm3',
       :percent_change_from_fifty_day_moving_average => 'm8',
-      :two_hundred_day_moving_average => 'm4'
+      :two_hundred_day_moving_average => 'm4',
+      :percent_change_from_two_hundred_day_moving_average => 'm6'
     }.values.join('')
   end
 end
-
-# % change from 200 day moving average: m6
