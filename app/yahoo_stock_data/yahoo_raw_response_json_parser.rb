@@ -22,7 +22,8 @@ class YahooRawResponseJsonParser
         market_cap: stock[14],
         one_year_target_price: convert_to_number(stock[15]),
         fifty_day_moving_average: convert_to_number(stock[16]),
-        percent_change_from_fifty_day_moving_average: convert_to_number(stock[17])
+        percent_change_from_fifty_day_moving_average: convert_to_number(stock[17]),
+        two_hundred_day_moving_average: convert_to_number(stock[18])
       }
     end
   end
