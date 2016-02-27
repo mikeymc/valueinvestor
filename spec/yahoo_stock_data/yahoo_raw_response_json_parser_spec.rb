@@ -11,6 +11,17 @@ RSpec.describe YahooRawResponseJsonParser do
   first_stock_book_value = 42.478
   first_stock_price_to_book = 12.4
   first_stock_price_to_earnings = 44.44
+  first_stock_last_trade_price = 44.44
+  first_stock_yearly_low_price = 44.44
+  first_stock_yearly_high_price = 44.44
+  first_stock_one_year_target_price = 44.44
+  first_stock_fifty_day_moving_average = 44.44
+  first_stock_percent_change_from_fifty_day_moving_average = 44.44
+  first_stock_two_hundred_day_moving_average = 44.44
+  first_stock_percent_change_from_two_hundred_day_moving_average = 44.44
+  first_stock_dividend_yield = 44.44
+  first_stock_market_cap = "\"1.34B\""
+  first_stock_ebitda = "\"2.45B\""
 
   second_stock_name = "\"Apple Inc.\""
   second_stock_symbol = "\"AAPL\""
@@ -22,6 +33,17 @@ RSpec.describe YahooRawResponseJsonParser do
   second_stock_book_value = 19.015
   second_stock_price_to_book = 'N/A'
   second_stock_price_to_earnings = 55.55
+  second_stock_ebitda = "\"2.2M\""
+  second_stock_market_cap = "\"7.89.M\""
+  second_stock_last_trade_price = 44.44
+  second_stock_yearly_low_price = 44.44
+  second_stock_yearly_high_price = 44.44
+  second_stock_one_year_target_price = 44.44
+  second_stock_fifty_day_moving_average = 44.44
+  second_stock_percent_change_from_fifty_day_moving_average = 44.44
+  second_stock_two_hundred_day_moving_average = 44.44
+  second_stock_percent_change_from_two_hundred_day_moving_average = 44.44
+  second_stock_dividend_yield = 44.44
 
   aapl_xom_fake_response =
     "#{first_stock_name}," +
@@ -33,7 +55,18 @@ RSpec.describe YahooRawResponseJsonParser do
       "#{first_stock_daily_low_price}," +
       "#{first_stock_book_value}," +
       "#{first_stock_price_to_book}," +
-      "#{first_stock_price_to_earnings}\n" +
+      "#{first_stock_price_to_earnings}," +
+      "#{first_stock_yearly_low_price}," +
+      "#{first_stock_yearly_high_price}," +
+      "#{first_stock_last_trade_price}," +
+      "#{first_stock_ebitda}," +
+      "#{first_stock_market_cap}," +
+      "#{first_stock_one_year_target_price}," +
+      "#{first_stock_fifty_day_moving_average}," +
+      "#{first_stock_percent_change_from_fifty_day_moving_average}," +
+      "#{first_stock_two_hundred_day_moving_average}," +
+      "#{first_stock_percent_change_from_two_hundred_day_moving_average}," +
+      "#{first_stock_dividend_yield}\n" +
       "#{second_stock_name}," +
       "#{second_stock_symbol}," +
       "#{second_stock_exchange}," +
@@ -43,11 +76,22 @@ RSpec.describe YahooRawResponseJsonParser do
       "#{second_stock_daily_low_price}," +
       "#{second_stock_book_value}," +
       "#{second_stock_price_to_book}," +
-      "#{second_stock_price_to_earnings}"
+      "#{second_stock_price_to_earnings}," +
+      "#{second_stock_yearly_low_price}," +
+      "#{second_stock_yearly_high_price}," +
+      "#{second_stock_last_trade_price}," +
+      "#{second_stock_ebitda}," +
+      "#{second_stock_market_cap}," +
+      "#{second_stock_one_year_target_price}," +
+      "#{second_stock_fifty_day_moving_average}," +
+      "#{second_stock_percent_change_from_fifty_day_moving_average}," +
+      "#{second_stock_two_hundred_day_moving_average}," +
+      "#{second_stock_percent_change_from_two_hundred_day_moving_average}," +
+      "#{second_stock_dividend_yield}\n"
 
   describe 'parse_to_json' do
     it 'parses raw responses to lists of stock hashes' do
-      list = YahooRawResponseJsonParser.parse aapl_xom_fake_response
+      list = YahooRawResponseJsonParser.new.parse aapl_xom_fake_response
       first_stock = list[0]
       second_stock = list[1]
 
@@ -61,6 +105,8 @@ RSpec.describe YahooRawResponseJsonParser do
       expect(first_stock[:book_value]).to eq(42.478)
       expect(first_stock[:price_to_book_ratio]).to eq(12.4)
       expect(first_stock[:price_to_earnings_ratio]).to eq(44.44)
+      expect(first_stock[:market_cap]).to eq(1340000000)
+      expect(first_stock[:ebitda]).to eq(2450000000)
 
       expect(second_stock[:name]).to eq('Apple Inc.')
       expect(second_stock[:symbol]).to eq('AAPL')

@@ -5,7 +5,7 @@ class YahooStockDataFetcher
 
   def fetch_stock_data(tickers)
     response = make_request tickers
-    YahooRawResponseJsonParser.parse response
+    YahooRawResponseJsonParser.new.parse response
   end
 
   private

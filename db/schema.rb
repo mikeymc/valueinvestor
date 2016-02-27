@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160226064930) do
+ActiveRecord::Schema.define(version: 20160227180658) do
 
   create_table "market_watch_data", force: true do |t|
     t.string   "average_recommendation"
@@ -41,8 +41,8 @@ ActiveRecord::Schema.define(version: 20160226064930) do
     t.decimal "year_low_price"
     t.decimal "year_high_price"
     t.integer "stock_id"
-    t.string  "ebitda"
-    t.string  "market_cap"
+    t.decimal "ebitda"
+    t.decimal "market_cap"
     t.decimal "one_year_target_price"
     t.decimal "fifty_day_moving_average"
     t.decimal "percent_change_from_fifty_day_moving_average"

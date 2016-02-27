@@ -32,8 +32,8 @@ RSpec.describe 'finding stocks' do
     expect(stock.find('.price-to-earnings-ratio').text).to match /\d+\.\d+/
     expect(stock.find('.year-low-price').text).to match /\d+\.\d+/
     expect(stock.find('.year-high-price').text).to match /\d+\.\d+/
-    expect(stock.find('.ebitda').text).to match /\d+\.\d+\D/
-    expect(stock.find('.market-cap').text).to match /\d+\.\d+\D/
+    expect(stock.find('.ebitda').text).to match /\d+\.\d+/
+    expect(stock.find('.market-cap').text).to match /\d+\.\d+/
     expect(stock.find('.one-year-target-price').text).to match /\d+\.\d+/
     expect(stock.find('.dividend-yield').text).to match /\d+\.\d+/
     expect(stock.find('.fifty-day-moving-average').text).to match /\d+\.\d+/

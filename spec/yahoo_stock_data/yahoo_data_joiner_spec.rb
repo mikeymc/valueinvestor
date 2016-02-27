@@ -19,8 +19,8 @@ RSpec.describe YahooDataJoiner do
     first_stock[:year_low_price] = 100.11
     first_stock[:year_high_price] = 200.11
     first_stock[:last_trade_price] = 1.23
-    first_stock[:ebitda] = '1.23B'
-    first_stock[:market_cap] = '100.2B'
+    first_stock[:ebitda] = 1230000000
+    first_stock[:market_cap] = 100200000000
     first_stock[:one_year_target_price] = 99.89
     first_stock[:fifty_day_moving_average] = 101.11
     first_stock[:percent_change_from_fifty_day_moving_average] = 1.23
@@ -72,8 +72,8 @@ RSpec.describe YahooDataJoiner do
     expect(tif_stock.yahoo_data.year_low_price).to eq(100.11)
     expect(tif_stock.yahoo_data.year_high_price).to eq(200.11)
     expect(tif_stock.yahoo_data.last_trade_price).to eq(1.23)
-    expect(tif_stock.yahoo_data.ebitda).to eq('1.23B')
-    expect(tif_stock.yahoo_data.market_cap).to eq('100.2B')
+    expect(tif_stock.yahoo_data.ebitda).to eq(1230000000)
+    expect(tif_stock.yahoo_data.market_cap).to eq(100200000000)
     expect(tif_stock.yahoo_data.one_year_target_price).to eq(99.89)
     expect(tif_stock.yahoo_data.fifty_day_moving_average).to eq(101.11)
     expect(tif_stock.yahoo_data.percent_change_from_fifty_day_moving_average).to eq(1.23)
