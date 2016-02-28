@@ -1,6 +1,7 @@
 class Stock < ActiveRecord::Base
   has_one :market_watch_data, dependent: :destroy
   has_one :yahoo_data, dependent: :destroy
+  has_one :street_insider_data, dependent: :destroy
 
   def self.list_all_symbols
     symbols = []

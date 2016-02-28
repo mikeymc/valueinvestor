@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160227180658) do
+ActiveRecord::Schema.define(version: 20160228055537) do
 
   create_table "market_watch_data", force: true do |t|
     t.string   "average_recommendation"
@@ -29,6 +29,15 @@ ActiveRecord::Schema.define(version: 20160227180658) do
     t.string   "exchange"
     t.string   "symbol"
   end
+
+  create_table "street_insider_data", force: true do |t|
+    t.string   "average_recommendation"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "stock_id"
+  end
+
+  add_index "street_insider_data", ["stock_id"], name: "index_street_insider_data_on_stock_id"
 
   create_table "yahoo_data", force: true do |t|
     t.decimal "current_eps"
