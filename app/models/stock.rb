@@ -24,4 +24,10 @@ class Stock < ActiveRecord::Base
       market_watch_data.average_recommendation
     end
   end
+
+  def street_insider_recommendation
+    if self.street_insider_data
+      street_insider_data.average_recommendation
+    end
+  end
 end

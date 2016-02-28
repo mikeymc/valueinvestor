@@ -40,6 +40,8 @@ RSpec.describe 'finding stocks' do
     expect(stock.find('.percent-change-from-fifty-day-moving-average').text).to match /\d+\.\d+/
     expect(stock.find('.two-hundred-day-moving-average').text).to match /\d+\.\d+/
     expect(stock.find('.percent-change-from-two-hundred-day-moving-average').text).to match /\d+\.\d+/
+    expect(stock.find('.marketwatch-recommendation').text).to match /\D+/
+    expect(stock.find('.street-insider-recommendation').text).to match /\D+/
   end
 
   def see_headers

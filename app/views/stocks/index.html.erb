@@ -21,6 +21,7 @@
           <th align="text-center"><%= sortable "yahoo_data.year_low_price", "Year Low" %></th>
           <th align="text-center"><%= sortable "yahoo_data.year_high_price", "Year High" %></th>
           <th align="text-center"><%= sortable "market_watch_data.average_recommendation", "MarketWatch Recommendation" %></th>
+          <th align="text-center"><%= sortable "street_insider_data.average_recommendation", "Street Insider Recommendation" %></th>
           <th align="text-center"><%= sortable "yahoo_data.ebitda", "EBITDA" %></th>
           <th align="text-center">1Y Target</th>
           <th align="text-center">50-day Moving Average</th>
@@ -45,7 +46,8 @@
                 <td class="day-low-price"><%= (stock.yahoo_data.day_low_price).round(2) unless !stock.yahoo_data.day_low_price %></td>
                 <td class="year-low-price"><%= (stock.yahoo_data.year_low_price).round(2) unless !stock.yahoo_data.year_low_price %></td>
                 <td class="year-high-price"><%= (stock.yahoo_data.year_high_price).round(2) unless !stock.yahoo_data.year_high_price %></td>
-                <td><a href="<%= "http://www.marketwatch.com/investing/stock/#{stock.symbol}/analystestimates" %>" target="_blank"><%= (stock.market_watch_recommendation) %></a></td>
+                <td class="marketwatch-recommendation"><a href="<%= "http://www.marketwatch.com/investing/stock/#{stock.symbol}/analystestimates" %>" target="_blank"><%= (stock.market_watch_recommendation) %></a></td>
+                <td class="street-insider-recommendation"><a href="<%= "http://www.streetinsider.com/rating_history.php?q=#{stock.symbol}" %>" target="_blank"><%= (stock.street_insider_recommendation) %></a></td>
                 <td class="ebitda"><%= (number_to_human(stock.yahoo_data.ebitda)) unless !stock.yahoo_data.ebitda %></td>
                 <td class="one-year-target-price"><%= (stock.yahoo_data.one_year_target_price).round(2) unless !stock.yahoo_data.one_year_target_price %></td>
                 <td class="fifty-day-moving-average"><%= (stock.yahoo_data.fifty_day_moving_average).round(2) unless !stock.yahoo_data.fifty_day_moving_average %></td>
