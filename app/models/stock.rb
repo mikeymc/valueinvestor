@@ -31,4 +31,10 @@ class Stock < ActiveRecord::Base
       street_insider_data.average_recommendation
     end
   end
+
+  def bar_chart_recommendation
+    if self.bar_chart_data
+      bar_chart_data.average_recommendation
+    end
+  end
 end

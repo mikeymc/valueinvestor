@@ -25,8 +25,6 @@ RSpec.describe 'finding stocks' do
     expect(stock.find('.last-trade-price').text).to match /\d+\.\d+/
     expect(stock.find('.current-eps').text).to match /\d+\.\d+/
     expect(stock.find('.dividends-amount').text).to match /\d+\.\d+/
-    expect(stock.find('.day-high-price').text).to match /\d+\.\d+/
-    expect(stock.find('.day-low-price').text).to match /\d+\.\d+/
     expect(stock.find('.book-value').text).to match /\d+\.\d+/
     expect(stock.find('.price-to-book-ratio').text).to match /\d+\.\d+/
     expect(stock.find('.price-to-earnings-ratio').text).to match /\d+\.\d+/
@@ -48,21 +46,23 @@ RSpec.describe 'finding stocks' do
     expected_row_headers = [
       'Name',
       'Last Trade Price',
-      'EPS',
+      'Annual EPS',
       'Dividend',
       'Dividend Yield (%)',
-      'EBITDA',
+      'EBITDA (ttm)',
       'Market Cap',
       '1Y Target',
       '50-day Moving Average',
       '% Change from 50-day Moving Average',
       '200-day Moving Average',
       '% Change from 200-day Moving Average',
-      'Day High',
-      'Day Low',
       'Book Value',
-      'Price/Book',
+      'Price/Book (mrq)',
       'P/E',
+      'Barchart',
+      'Street Insider',
+      'Street Insider',
+      'MarketWatch',
       'Year Low',
       'Year High'
     ]
