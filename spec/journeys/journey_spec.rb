@@ -7,7 +7,6 @@ RSpec.describe 'finding stocks' do
 
   it 'enables the user to view stocks' do
     visit '/'
-    expect(page).to have_content 'Global Stocks'
     see_headers
     see_3M_stock
     sort_by_stock_name
@@ -57,12 +56,12 @@ RSpec.describe 'finding stocks' do
       '200-day Moving Average',
       '% Change from 200-day Moving Average',
       'Book Value',
-      'Price/Book (mrq)',
+      'P/B (mrq)',
       'P/E',
-      'Barchart',
+      'Bar Chart',
       'Street Insider',
       'Street Insider',
-      'MarketWatch',
+      'MW',
       'Year Low',
       'Year High'
     ]

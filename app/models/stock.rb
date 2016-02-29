@@ -3,6 +3,7 @@ class Stock < ActiveRecord::Base
   has_one :market_watch_data, dependent: :destroy
   has_one :street_insider_data, dependent: :destroy
   has_one :bar_chart_data, dependent: :destroy
+  has_one :yahoo_key_statistics_data, dependent: :destroy
 
   def self.list_all_symbols
     symbols = []
@@ -35,6 +36,15 @@ class Stock < ActiveRecord::Base
   def bar_chart_recommendation
     if self.bar_chart_data
       bar_chart_data.average_recommendation
+    end
+  end
+
+  def ebitda_to_ev
+    if self.yahoo_data &&
+      self.yahoo_data.ebitda &&
+      self.yahoo_key_statistics_data &&
+      self.yahoo_key_statistics_data.enterprise_value
+      yahoo_data.ebitda / yahoo_key_statistics_data.enterprise_value
     end
   end
 end
