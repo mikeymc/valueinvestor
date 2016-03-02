@@ -9,6 +9,7 @@ class Stock < ActiveRecord::Base
   scope :price_to_earnings_below, -> (amount) { where("yahoo_data.price_to_earnings_ratio <= #{amount}") }
   scope :profit_margin_at_least, -> (amount) { where("yahoo_key_statistics_data.profit_margin >= #{amount}") }
   scope :operating_margin_at_least, -> (amount) { where("yahoo_key_statistics_data.operating_margin >= #{amount}") }
+  scope :one_year_target_growth_rate_at_least, -> (amount) { where("yahoo_data.one_year_growth_expectation >= #{amount}") }
 
   def self.list_all_symbols
     symbols = []

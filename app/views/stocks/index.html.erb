@@ -1,11 +1,13 @@
 <div class="container stocks-container">
   <%= form_tag("/", method: "get") do %>
     <%= label_tag(:dividend_yield_filter, "Minimum Dividend Yield:") %>
-    <%= text_field_tag(:dividend_yield_filter, (params[:dividend_yield_filter] or -999999999))  %>
+    <%= text_field_tag(:dividend_yield_filter, (params[:dividend_yield_filter] or nil))  %>
     <%= label_tag(:price_to_earnings_maximum, "Max P/E:") %>
-    <%= text_field_tag(:price_to_earnings_maximum, (params[:price_to_earnings_maximum] or 999999999)) %>
+    <%= text_field_tag(:price_to_earnings_maximum, (params[:price_to_earnings_maximum] or nil)) %>
     <%= label_tag(:minimum_profit_margin, "Min Profit Margin:") %>
-    <%= text_field_tag(:minimum_profit_margin, (params[:minimum_profit_margin] or -999999999)) %>
+    <%= text_field_tag(:minimum_profit_margin, (params[:minimum_profit_margin] or nil)) %>
+    <%= label_tag(:one_year_target_growth_rate, "Min 1Y Growth Rate:") %>
+    <%= text_field_tag(:one_year_target_growth_rate, (params[:one_year_target_growth_rate] or nil)) %>
     <%= submit_tag("Filter") %>
   <% end %>  <div class="panel panel-default">
     <div class="panel-body">
@@ -28,11 +30,12 @@
           <th align="text-center"><%= sortable "yahoo_key_statistics_data.operating_margin", "Operating Margin" %></th>
           <th align="text-center"><%= sortable "yahoo_data.year_low_price", "Year Low" %></th>
           <th align="text-center"><%= sortable "yahoo_data.year_high_price", "Year High" %></th>
-          <th align="text-center">1Y Target</th>
-          <th align="text-center">50-day Moving Average</th>
-          <th align="text-center">% Change from 50-day Moving Average</th>
-          <th align="text-center">200-day Moving Average</th>
-          <th align="text-center">% Change from 200-day Moving Average</th>
+          <th align="text-center"><%= sortable "yahoo_data.one_year_target_price", "1Y Target" %></th>
+          <th align="text-center"><%= sortable "yahoo_data.one_year_growth_expectation", "1Y Target Growth Rate" %></th>
+          <th align="text-center"><%= sortable "yahoo_data.fifty_day_moving_average", "50-day Moving Average" %></th>
+          <th align="text-center"><%= sortable "yahoo_data.percent_change_from_fifty_day_moving_average", "% Change from 50-day Moving Average" %></th>
+          <th align="text-center"><%= sortable "yahoo_data.two_hundred_day_moving_average", "200-day Moving Average" %></th>
+          <th align="text-center"><%= sortable "yahoo_data.percent_change_from_two_hundred_day_moving_average", "% Change from 200-day Moving Average" %></th>
           <th align="text-center"><%= sortable "market_watch_data.average_recommendation", "MW" %></th>
           <th align="text-center"><%= sortable "street_insider_data.average_recommendation", "Street Insider" %></th>
           <th align="text-center"><%= sortable "bar_chart_data.average_recommendation", "Bar Chart" %></th>
@@ -58,6 +61,7 @@
                 <td class="year-low-price"><%= (stock.yahoo_data.year_low_price).round(2) unless !stock.yahoo_data.year_low_price %></td>
                 <td class="year-high-price"><%= (stock.yahoo_data.year_high_price).round(2) unless !stock.yahoo_data.year_high_price %></td>
                 <td class="one-year-target-price"><%= (stock.yahoo_data.one_year_target_price).round(2) unless !stock.yahoo_data.one_year_target_price %></td>
+                <td class="one-year-target-growth-rate"><%= (stock.yahoo_data.one_year_growth_expectation).round(2) unless !stock.yahoo_data.one_year_growth_expectation %></td>
                 <td class="fifty-day-moving-average"><%= (stock.yahoo_data.fifty_day_moving_average).round(2) unless !stock.yahoo_data.fifty_day_moving_average %></td>
                 <td class="percent-change-from-fifty-day-moving-average"><%= (stock.yahoo_data.percent_change_from_fifty_day_moving_average).round(2) unless !stock.yahoo_data.percent_change_from_fifty_day_moving_average %></td>
                 <td class="two-hundred-day-moving-average"><%= (stock.yahoo_data.two_hundred_day_moving_average).round(2) unless !stock.yahoo_data.two_hundred_day_moving_average %></td>

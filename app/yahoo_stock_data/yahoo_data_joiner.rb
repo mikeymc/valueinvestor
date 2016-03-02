@@ -21,6 +21,9 @@ class YahooDataJoiner
       stock.yahoo_data.two_hundred_day_moving_average = yahoo_stock[:two_hundred_day_moving_average]
       stock.yahoo_data.percent_change_from_two_hundred_day_moving_average = yahoo_stock[:percent_change_from_two_hundred_day_moving_average]
       stock.yahoo_data.dividend_yield = yahoo_stock[:dividend_yield]
+      unless yahoo_stock[:one_year_target_price].nil? or yahoo_stock[:last_trade_price].nil?
+        stock.yahoo_data.one_year_growth_expectation = (yahoo_stock[:one_year_target_price] - yahoo_stock[:last_trade_price]) / yahoo_stock[:last_trade_price]
+      end
       stock.yahoo_data.save!
     end
   end

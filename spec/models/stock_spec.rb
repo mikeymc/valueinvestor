@@ -99,5 +99,19 @@ RSpec.describe Stock, :type => :model do
         expect(high_yield_stocks.size).to eq(4)
       end
     end
+
+    describe 'one_year_year_target_growth_rate_at_least' do
+      it 'returns stocks with projected growth rates greater than or equal to the input' do
+        create(:stock, symbol: 'ABC', name: 'ABC Corp', yahoo_data: create(:yahoo_data, one_year_growth_expectation: 14.1))
+        create(:stock, symbol: 'DEF', name: 'DEF Corp', yahoo_data: create(:yahoo_data, one_year_growth_expectation: 10.1))
+        create(:stock, symbol: 'GHI', name: 'GHI Corp', yahoo_data: create(:yahoo_data, one_year_growth_expectation: 32.1))
+        create(:stock, symbol: 'JKL', name: 'JKL Corp', yahoo_data: create(:yahoo_data, one_year_growth_expectation: 3.1))
+        create(:stock, symbol: 'MNO', name: 'MNO Corp', yahoo_data: create(:yahoo_data, one_year_growth_expectation: -3.1))
+
+        high_growth_stocks = Stock.includes(:yahoo_data).references(:yahoo_data).one_year_target_growth_rate_at_least(10)
+
+        expect(high_growth_stocks.size).to eq(3)
+      end
+    end
   end
 end
