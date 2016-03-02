@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160229032752) do
+ActiveRecord::Schema.define(version: 20160302041707) do
 
   create_table "bar_chart_data", force: true do |t|
     t.string   "average_recommendation"
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 20160229032752) do
     t.decimal "return_on_equity"
     t.decimal "beta"
     t.integer "stock_id"
+    t.decimal "ebitda_to_ev"
   end
 
   add_index "yahoo_key_statistics_data", ["stock_id"], name: "index_yahoo_key_statistics_data_on_stock_id"
