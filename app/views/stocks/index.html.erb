@@ -1,5 +1,13 @@
 <div class="container stocks-container">
-  <div class="panel panel-default">
+  <%= form_tag("/", method: "get") do %>
+    <%= label_tag(:dividend_yield_filter, "Minimum Dividend Yield:") %>
+    <%= text_field_tag(:dividend_yield_filter, (params[:dividend_yield_filter] or -999999999))  %>
+    <%= label_tag(:price_to_earnings_maximum, "Max P/E:") %>
+    <%= text_field_tag(:price_to_earnings_maximum, (params[:price_to_earnings_maximum] or 999999999)) %>
+    <%= label_tag(:minimum_profit_margin, "Min Profit Margin:") %>
+    <%= text_field_tag(:minimum_profit_margin, (params[:minimum_profit_margin] or -999999999)) %>
+    <%= submit_tag("Filter") %>
+  <% end %>  <div class="panel panel-default">
     <div class="panel-body">
       <div class="well well-sm">
         <table class="table-striped table-bordered all-stocks-table">
@@ -8,7 +16,7 @@
           <th align="text-center"><%= sortable "yahoo_data.market_cap", "Market Cap" %></th>
           <th align="text-center"><%= sortable "yahoo_key_statistics_data.enterprise_value", "EV" %></th>
           <th align="text-center"><%= sortable "yahoo_data.ebitda", "EBITDA (ttm)" %></th>
-          <th align="text-center">EBITDA to EV</th>
+          <th align="text-center"><%= sortable "yahoo_key_statistics_data.ebitda_to_ev", "EBITDA to EV" %></th>
           <th align="text-center"><%= sortable "yahoo_data.last_trade_price", "Last Trade Price" %></th>
           <th align="text-center"><%= sortable "yahoo_data.book_value", "Book Value" %></th>
           <th align="text-center"><%= sortable "yahoo_data.price_to_book_ratio", "P/B (mrq)" %></th>
@@ -66,4 +74,3 @@
     </div>
   </div>
 </div>
-

@@ -44,4 +44,60 @@ RSpec.describe Stock, :type => :model do
       expect(MarketWatchData.all.size).to eq(0)
     end
   end
+
+  context 'scopes' do
+    describe 'yield_above' do
+      it 'returns stocks with yields greater than or equal to the input' do
+        create(:stock, symbol: 'ABC', name: 'ABC Corp', yahoo_data: create(:yahoo_data, dividend_yield: 0.1))
+        create(:stock, symbol: 'DEF', name: 'DEF Corp', yahoo_data: create(:yahoo_data, dividend_yield: 1.1))
+        create(:stock, symbol: 'GHI', name: 'GHI Corp', yahoo_data: create(:yahoo_data, dividend_yield: 2.1))
+        create(:stock, symbol: 'JKL', name: 'JKL Corp', yahoo_data: create(:yahoo_data, dividend_yield: 3.1))
+
+        high_yield_stocks = Stock.includes(:yahoo_data).references(:yahoo_data).yield_above(1.1)
+
+        expect(high_yield_stocks.size).to eq(3)
+      end
+    end
+
+    describe 'price_to_earnings_below' do
+      it 'returns stocks with P/E ratios lower than or equal to the input' do
+        create(:stock, symbol: 'ABC', name: 'ABC Corp', yahoo_data: create(:yahoo_data, price_to_earnings_ratio: 14.1))
+        create(:stock, symbol: 'DEF', name: 'DEF Corp', yahoo_data: create(:yahoo_data, price_to_earnings_ratio: 10.1))
+        create(:stock, symbol: 'GHI', name: 'GHI Corp', yahoo_data: create(:yahoo_data, price_to_earnings_ratio: 32.1))
+        create(:stock, symbol: 'JKL', name: 'JKL Corp', yahoo_data: create(:yahoo_data, price_to_earnings_ratio: 3.1))
+
+        high_yield_stocks = Stock.includes(:yahoo_data).references(:yahoo_data).price_to_earnings_below(10.1)
+
+        expect(high_yield_stocks.size).to eq(2)
+      end
+    end
+
+    describe 'profit_margin_at_least' do
+      it 'returns stocks with profit margins greater than or equal to the input' do
+        create(:stock, symbol: 'ABC', name: 'ABC Corp', yahoo_key_statistics_data: create(:yahoo_key_statistics_data, profit_margin: 14.1))
+        create(:stock, symbol: 'DEF', name: 'DEF Corp', yahoo_key_statistics_data: create(:yahoo_key_statistics_data, profit_margin: 10.1))
+        create(:stock, symbol: 'GHI', name: 'GHI Corp', yahoo_key_statistics_data: create(:yahoo_key_statistics_data, profit_margin: 32.1))
+        create(:stock, symbol: 'JKL', name: 'JKL Corp', yahoo_key_statistics_data: create(:yahoo_key_statistics_data, profit_margin: 3.1))
+        create(:stock, symbol: 'MNO', name: 'MNO Corp', yahoo_key_statistics_data: create(:yahoo_key_statistics_data, profit_margin: -3.1))
+
+        high_yield_stocks = Stock.includes(:yahoo_key_statistics_data).references(:yahoo_key_statistics_data).profit_margin_at_least(0)
+
+        expect(high_yield_stocks.size).to eq(4)
+      end
+    end
+
+    describe 'operating_margin_at_least' do
+      it 'returns stocks with operating margins greater than or equal to the input' do
+        create(:stock, symbol: 'ABC', name: 'ABC Corp', yahoo_key_statistics_data: create(:yahoo_key_statistics_data, operating_margin: 14.1))
+        create(:stock, symbol: 'DEF', name: 'DEF Corp', yahoo_key_statistics_data: create(:yahoo_key_statistics_data, operating_margin: 10.1))
+        create(:stock, symbol: 'GHI', name: 'GHI Corp', yahoo_key_statistics_data: create(:yahoo_key_statistics_data, operating_margin: 32.1))
+        create(:stock, symbol: 'JKL', name: 'JKL Corp', yahoo_key_statistics_data: create(:yahoo_key_statistics_data, operating_margin: 3.1))
+        create(:stock, symbol: 'MNO', name: 'MNO Corp', yahoo_key_statistics_data: create(:yahoo_key_statistics_data, operating_margin: -3.1))
+
+        high_yield_stocks = Stock.includes(:yahoo_key_statistics_data).references(:yahoo_key_statistics_data).operating_margin_at_least(-2)
+
+        expect(high_yield_stocks.size).to eq(4)
+      end
+    end
+  end
 end

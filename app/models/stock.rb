@@ -5,6 +5,11 @@ class Stock < ActiveRecord::Base
   has_one :bar_chart_data, dependent: :destroy
   has_one :yahoo_key_statistics_data, dependent: :destroy
 
+  scope :yield_above, -> (amount) { where("yahoo_data.dividend_yield >= #{amount}") }
+  scope :price_to_earnings_below, -> (amount) { where("yahoo_data.price_to_earnings_ratio <= #{amount}") }
+  scope :profit_margin_at_least, -> (amount) { where("yahoo_key_statistics_data.profit_margin >= #{amount}") }
+  scope :operating_margin_at_least, -> (amount) { where("yahoo_key_statistics_data.operating_margin >= #{amount}") }
+
   def self.list_all_symbols
     symbols = []
     Stock.all.each do |stock|
