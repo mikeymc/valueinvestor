@@ -11,10 +11,10 @@ RSpec.describe StockDataAggregator do
 
   it 'deletes everything, constructs Nasdaq and NYSE stocks, joins Yahoo finance data, and adds MarketWatch data' do
     expect(Stock).to receive(:destroy_all).and_call_original
-    expect_any_instance_of(ListInitializer).to receive(:initialize_nyse_list).and_wrap_original do
+    expect_any_instance_of(ListInitializer).to receive(:load_nyse_list).and_wrap_original do
       create(:stock, name: 'Another NYSE Stock Name', symbol: 'TIF')
     end
-    expect_any_instance_of(ListInitializer).to receive(:initialize_nasdaq_list).and_wrap_original do
+    expect_any_instance_of(ListInitializer).to receive(:load_nasdaq_list).and_wrap_original do
       create(:stock, name: 'Another Nasdaq Stock Name', symbol: 'AAPL')
     end
     expect_any_instance_of(YahooStockDataFetcher).to receive(:fetch_stock_data).exactly(1).times.and_call_original

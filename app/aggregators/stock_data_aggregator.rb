@@ -18,8 +18,8 @@ class StockDataAggregator
 
   def initialize_stocks
     initializer = ListInitializer.new
-    initializer.initialize_nasdaq_list
-    initializer.initialize_nyse_list
+    initializer.load_nasdaq_list
+    initializer.load_nyse_list
   end
 
   def aggregate_yahoo_data
