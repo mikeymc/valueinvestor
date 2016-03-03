@@ -5,11 +5,12 @@ class Stock < ActiveRecord::Base
   has_one :bar_chart_data, dependent: :destroy
   has_one :yahoo_key_statistics_data, dependent: :destroy
 
-  scope :yield_above, -> (amount) { where("yahoo_data.dividend_yield >= #{amount}") }
-  scope :price_to_earnings_below, -> (amount) { where("yahoo_data.price_to_earnings_ratio <= #{amount}") }
-  scope :profit_margin_at_least, -> (amount) { where("yahoo_key_statistics_data.profit_margin >= #{amount}") }
-  scope :operating_margin_at_least, -> (amount) { where("yahoo_key_statistics_data.operating_margin >= #{amount}") }
-  scope :one_year_target_growth_rate_at_least, -> (amount) { where("yahoo_data.one_year_growth_expectation >= #{amount}") }
+  scope :yield_above, -> (amount) { where('yahoo_data.dividend_yield >= ?', amount) }
+  scope :price_to_earnings_below, -> (amount) { where('yahoo_data.price_to_earnings_ratio <= ?', amount) }
+  scope :profit_margin_at_least, -> (amount) { where('yahoo_key_statistics_data.profit_margin >= ?', amount) }
+  scope :operating_margin_at_least, -> (amount) { where('yahoo_key_statistics_data.operating_margin >= ?', amount) }
+  scope :one_year_target_growth_rate_at_least, -> (amount) { where('yahoo_data.one_year_growth_expectation >= ?', amount) }
+  scope :search_by_name, -> (query) { where('name LIKE ? OR symbol LIKE ?', "%#{query}%", "%#{query}%") }
 
   def self.list_all_symbols
     symbols = []
@@ -42,15 +43,6 @@ class Stock < ActiveRecord::Base
   def bar_chart_recommendation
     if self.bar_chart_data
       bar_chart_data.average_recommendation
-    end
-  end
-
-  def ebitda_to_ev
-    if self.yahoo_data &&
-      self.yahoo_data.ebitda &&
-      self.yahoo_key_statistics_data &&
-      self.yahoo_key_statistics_data.enterprise_value
-      yahoo_data.ebitda / yahoo_key_statistics_data.enterprise_value
     end
   end
 end

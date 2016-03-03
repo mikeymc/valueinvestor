@@ -113,5 +113,19 @@ RSpec.describe Stock, :type => :model do
         expect(high_growth_stocks.size).to eq(3)
       end
     end
+
+    describe 'search' do
+      it 'returns stocks with names that match' do
+        create(:stock, symbol: 'BEST WESTERN', name: 'ABC Corp')
+        create(:stock, symbol: 'WESTERN UNION', name: 'DEF Corp')
+        create(:stock, symbol: 'BESTEST FRIENDS INC', name: 'GHI Corp')
+        create(:stock, symbol: 'WEST NILE', name: 'JKL Corp')
+        create(:stock, symbol: 'SOMETHING ELSE', name: 'MNO Corp')
+
+        high_growth_stocks = Stock.search_by_name('WEST')
+
+        expect(high_growth_stocks.size).to eq(3)
+      end
+    end
   end
 end

@@ -12,7 +12,9 @@ class StocksController < ApplicationController
     @stocks = @stocks.yield_above(params[:dividend_yield_filter]) unless params[:dividend_yield_filter].blank?
     @stocks = @stocks.price_to_earnings_below(params[:price_to_earnings_maximum]) unless params[:price_to_earnings_maximum].blank?
     @stocks = @stocks.profit_margin_at_least(params[:minimum_profit_margin]) unless params[:minimum_profit_margin].blank?
+    @stocks = @stocks.operating_margin_at_least(params[:minimum_operating_margin]) unless params[:minimum_operating_margin].blank?
     @stocks = @stocks.one_year_target_growth_rate_at_least(params[:one_year_target_growth_rate]) unless params[:one_year_target_growth_rate].blank?
+    @stocks = @stocks.search_by_name(params[:stock_name_search_parameter].upcase) unless params[:stock_name_search_parameter].blank?
   end
 
   def sort_column
