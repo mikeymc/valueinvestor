@@ -1,4 +1,4 @@
-require 'CSV'
+require 'csv'
 
 class ListInitializer
   def refresh_nasdaq_stock_list
