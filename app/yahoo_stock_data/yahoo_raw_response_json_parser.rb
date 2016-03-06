@@ -1,5 +1,3 @@
-require 'CSV'
-
 class YahooRawResponseJsonParser
   def initialize
     @converter = NumberConverter.new

@@ -12,6 +12,10 @@ gem 'uglifier', '>= 1.3.0'
 gem 'will_paginate', '~> 3.0'
 gem 'mechanize'
 
+group :production do
+  gem 'pg'
+end
+
 group :development, :test do
   gem 'byebug'
   gem 'capybara', '>=0'

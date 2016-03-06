@@ -1,5 +1,3 @@
-require 'CSV'
-
 class ListInitializer
   def refresh_nasdaq_stock_list
     WebMock.allow_net_connect!
