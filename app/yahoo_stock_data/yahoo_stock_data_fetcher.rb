@@ -1,5 +1,3 @@
-require 'CGI'
-
 class YahooStockDataFetcher
   attr_accessor :list
 
