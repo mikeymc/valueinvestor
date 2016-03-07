@@ -4,23 +4,19 @@ require 'clockwork'
 
 include Clockwork
 
-every(1.minute, 'Doing my minute duty') do
-  puts 'Logging this minute...'
-end
-
-every(24.hours, 'Running my daily process...') do
-  puts 'aggregating stocks...'
-  StockDataAggregator.new.aggregate
-end
-
-every(8.hours, 'Running my thrice-daily process...') do
-  puts 'aggregating yahoo key stats...'
+every(1.hour, 'Refresh numbers') do
+  puts 'Aggregating yahoo data...'
+  YahooDataAggregator.new.aggregate
+  puts 'Aggregating yahoo key stats...'
   YahooKeyStatisticsDataAggregator.new.aggregate
-  puts 'aggregating mw data...'
+end
+
+every(1.day, 'Refresh analyses', :at => '02:30') do
+  puts 'Aggregating MarketWatch data...'
   MarketWatchDataAggregator.new.aggregate
-  puts 'aggregating bar chart data...'
+  puts 'Aggregating BarChart data...'
   BarChartDataAggregator.new.aggregate
-  puts 'aggregating street insider data...'
+  puts 'Aggregating Street Insider data...'
   StreetInsiderDataAggregator.new.aggregate
-  puts 'done!'
+  puts 'REFRESH COMPLETE!'
 end
