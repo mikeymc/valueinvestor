@@ -8,5 +8,6 @@ Bundler.require(*Rails.groups)
 
 module Valuenvestor
   class Application < Rails::Application
+    Rails.application.config.assets.compile = true
   end
 end
