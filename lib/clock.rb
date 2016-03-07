@@ -4,6 +4,10 @@ require 'clockwork'
 
 include Clockwork
 
+every(1.minute, 'Doing my minute duty') do
+  puts 'Logging this minute...'
+end
+
 every(24.hours, 'Running my daily process...') do
   puts 'aggregating stocks...'
   StockDataAggregator.new.aggregate
