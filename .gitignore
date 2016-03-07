@@ -16,8 +16,10 @@
 /tmp
 
 /public/assets/*.js
+/public/assets/*.json
 /public/assets/*.gz
 /public/assets/*.css
+/public/assets/bootstrap*
 /public/assetes/stylesheets/.sass-cache
 .sass-cache
 .byebug_history
