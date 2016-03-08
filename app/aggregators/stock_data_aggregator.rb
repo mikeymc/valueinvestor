@@ -2,8 +2,8 @@ class StockDataAggregator
   def aggregate
     destroy_stocks
     initialize_stocks
-    aggregate_yahoo_data
-    aggregate_market_watch_data
+    # aggregate_yahoo_data
+    # aggregate_market_watch_data
   end
 
   def aggregate_market_watch_data
