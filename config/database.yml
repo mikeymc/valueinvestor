@@ -1,7 +1,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: development_psql
+  database: valueinvestor_development
   pool: 5
   username: mikey
   password:
@@ -10,7 +10,7 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: test_psql
+  database: valueinvestor_test
   pool: 5
   username: mikey
   password:
@@ -19,7 +19,7 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: test_psql
+  database: valueinvestor_production
   pool: 5
   username: mikey
   password:

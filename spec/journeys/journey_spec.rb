@@ -23,7 +23,6 @@ RSpec.describe 'finding stocks' do
     expect(stock.find('.stock-name')).to have_content '3M COMPANY (MMM) NYSE'
     expect(stock.find('.last-trade-price').text).to match /\d+\.\d+/
     expect(stock.find('.current-eps').text).to match /\d+\.\d+/
-    expect(stock.find('.dividends-amount').text).to match /\d+\.\d+/
     expect(stock.find('.book-value').text).to match /\d+\.\d+/
     expect(stock.find('.price-to-book-ratio').text).to match /\d+\.\d+/
     expect(stock.find('.price-to-earnings-ratio').text).to match /\d+\.\d+/
@@ -44,30 +43,36 @@ RSpec.describe 'finding stocks' do
   def see_headers
     expected_row_headers = [
       'Name',
-      'Last Trade Price',
-      'Annual EPS',
-      'Dividend',
-      'Dividend Yield (%)',
-      'EBITDA (ttm)',
       'Market Cap',
+      'EV',
+      'EBITDA (ttm)',
+      'EBITDA to EV',
+      'Last Trade Price',
+      'Book Value',
+      'P/B (mrq)',
+      'P/E',
+      'Dividend Yield (%)',
+      'Annual EPS',
+      'Profit Margin',
+      'Operating Margin',
+      'Year Low',
+      'Year High',
       '1Y Target',
+      '1Y Target Growth (%)',
       '50-day Moving Average',
       '% Change from 50-day Moving Average',
       '200-day Moving Average',
       '% Change from 200-day Moving Average',
-      'Book Value',
-      'P/B (mrq)',
-      'P/E',
-      'Bar Chart',
-      'Street Insider',
-      'Street Insider',
       'MW',
-      'Year Low',
-      'Year High'
+      'Street Insider',
+      'Bar Chart'
     ]
     actual_row_headers = page.all('.all-stocks-table th').map do |header|
       header.text
     end
+
+    expect(actual_row_headers.size).to eq(expected_row_headers.size)
+
     expected_row_headers.each do |expected_header|
       expect(actual_row_headers).to include expected_header
     end
