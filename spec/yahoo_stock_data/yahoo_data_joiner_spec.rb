@@ -80,7 +80,7 @@ RSpec.describe YahooDataJoiner do
     expect(tif_stock.yahoo_data.two_hundred_day_moving_average).to eq(103.22)
     expect(tif_stock.yahoo_data.percent_change_from_two_hundred_day_moving_average).to eq(3.21)
     expect(tif_stock.yahoo_data.dividend_yield).to eq(5.67)
-    expect(tif_stock.yahoo_data.one_year_growth_expectation).to eq(8021.138211382113)
+    expect(tif_stock.yahoo_data.one_year_growth_expectation).to eq(8021.13821138211)
 
     expect(rgdx_stock.name).to eq('The Gap')
     expect(rgdx_stock.symbol).to eq('RGDX')
