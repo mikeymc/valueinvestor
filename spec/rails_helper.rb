@@ -7,7 +7,6 @@ require 'capybara/rspec'
 require 'capybara/rails'
 require 'rspec/rails'
 require 'factory_girl_rails'
-require 'capybara/poltergeist'
 require 'selenium-webdriver'
 require 'database_cleaner'
 
@@ -17,7 +16,7 @@ WebMock.allow_net_connect!
 Capybara.configure do |configuration|
   configuration.run_server = true
   configuration.server_port = 8888
-  configuration.default_driver = :poltergeist
+  configuration.default_driver = :selenium_chrome_headless
   configuration.app_host = 'http://localhost:8888'
   configuration.default_max_wait_time = 10
 end
